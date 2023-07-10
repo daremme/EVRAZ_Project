@@ -67,6 +67,8 @@
     <Compile Include="Process_window.xaml.cs">
       <DependentUpon>Process_window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Rails.cs" />
+    <Compile Include="Reports.cs" />
     <Compile Include="Report_window.xaml.cs">
       <DependentUpon>Report_window.xaml</DependentUpon>
     </Compile>

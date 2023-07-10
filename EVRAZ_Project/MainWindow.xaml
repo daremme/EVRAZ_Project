@@ -54,14 +54,14 @@
             <StackPanel>
                 <Label Grid.Column="0" Grid.Row="0" Content="О поставке" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-1,-1,-1,25" Height="45" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="25" Background="LightGray" BorderBrush="Gray" BorderThickness="1" />
 
-                <TextBox x:Name="Stamp" Height="23" TextWrapping="Wrap" Text="Введите номер клейма" VerticalAlignment="Top" Margin="15,0,15,10" FontSize="15" />
+                <TextBox x:Name="Stamp" Height="23" TextWrapping="Wrap" Text="Введите номер клейма" VerticalAlignment="Top" Margin="15,0,15,10" FontSize="15" PreviewMouseDown="Stamp_PreviewMouseDown" />
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Марка стали" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" Margin="15,0,15,0" VerticalAlignment="Top"  FontSize="15" />
-                    <Label Content="Профиль" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Margin="15,0,15,0" VerticalAlignment="Top"  FontSize="15" />
+                    <Label Content="Марка стали" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="15,0,15,0" VerticalAlignment="Top" Width="120" FontSize="15" />
+                    <Label Content="Профиль" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Margin="8,0,15,0" VerticalAlignment="Top" Width="120" FontSize="15" />
                 </Grid>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -76,11 +76,11 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <DatePicker  x:Name="Date" Margin="15,0,15,15" Grid.Column="0" Grid.Row="0" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" Foreground="Black" FontSize="15"  VerticalAlignment="Top" Height="30" />
-                    <TextBox x:Name="Time" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="Введите время" VerticalAlignment="Top" Margin="15,0,15,15" FontSize="15" Height="30" />
+                    <DatePicker  x:Name="Date" Margin="15,0,15,15" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" Foreground="Black" FontSize="15"  VerticalAlignment="Top" Height="30" />
+                    <TextBox x:Name="Time" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="Введите время" VerticalAlignment="Top" Margin="15,0,15,15" FontSize="15" Height="30" PreviewMouseDown="Time_PreviewMouseDown" />
                 </Grid>
 
-                <Button x:Name="Add" Content="Добавить" FontSize="15"  Margin="15,5,15,15"/>
+                <Button x:Name="Add" Content="Добавить" FontSize="15"  Margin="15,5,15,15" Click="Add_Click"/>
             </StackPanel>
             
         </Border>
@@ -90,9 +90,9 @@
             <StackPanel>
                 <Label Grid.Column="0" Grid.Row="0" Content="Поиск" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-1,-1,-1,25" Height="45" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="25" Background="LightGray" BorderBrush="Gray" BorderThickness="1" />
 
-                <TextBox x:Name="Search" Height="23" TextWrapping="Wrap" Text="Введите номер клейма" VerticalAlignment="Top" Margin="15,0,15,10" FontSize="15" />
+                <TextBox x:Name="Search" Height="23" TextWrapping="Wrap" Text="Введите номер клейма" VerticalAlignment="Top" Margin="15,0,15,10" FontSize="15" PreviewMouseDown="Search_PreviewMouseDown" />
 
-                <Button x:Name="Find" Content="Найти" FontSize="15"  Margin="15,5,15,35"/>
+                <Button x:Name="Find" Content="Найти" FontSize="15"  Margin="15,5,15,35" Click="Find_Click"/>
                 <Button x:Name="Newer" Content="Сначала новые" FontSize="15"  Margin="15,5,15,15"/>
                 <Button x:Name="Older" Content="Сначала старые" FontSize="15"  Margin="15,5,15,15"/>
             </StackPanel>
