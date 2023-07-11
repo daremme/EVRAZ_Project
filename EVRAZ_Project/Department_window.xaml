@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EVRAZ_Project"
         mc:Ignorable="d"
-        Title="Department_window" Height="380" Width="350">
+        Title="Department_window" Height="400" Width="350">
     <StackPanel>
         <Grid>
             <Border Background="LightGray" Margin="15,20,15,20" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
-                <CheckBox Content="CheckBox" HorizontalAlignment="Stretch" Margin="10,10,0,0"  VerticalAlignment="Top" Height="250"  />
+                <ListBox x:Name="Department"  HorizontalAlignment="Stretch" Margin="10,10,10,10"  VerticalAlignment="Top" Height="250" Background="LightGray" BorderThickness="0"/>
 
             </Border>
         </Grid>
