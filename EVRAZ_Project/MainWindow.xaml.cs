@@ -155,137 +155,209 @@ namespace EVRAZ_Project
 
         private void Delivery_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            Department_window Dialog = new Department_window();
-            Dialog.Title = "Продукты на поставке";
-
-            bool? result = Dialog.ShowDialog();
-
-            if (result == true)
+            if (Delivery.Items.Count != 0)
             {
-                MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            if (result == false)
-            {
-                MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                Department_window Dialog = new Department_window();
+                Dialog.Title = "Продукты на поставке";
+
+                for (int i = 0; i < Delivery.Items.Count; i++)
+                {
+                    Rails Rail = Delivery.Items[i] as Rails;
+                    Dialog.Department.Items.Add(Rail);
+                }
+
+                bool? result = Dialog.ShowDialog();
+
+                if (result == true)
+                {
+                    MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (result == false)
+                {
+                    MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
         private void Fridge_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            Department_window Dialog = new Department_window();
-            Dialog.Title = "Продукты в холодильнике";
-
-            bool? result = Dialog.ShowDialog();
-
-            if (result == true)
+            if (Fridge.Items.Count != 0)
             {
-                MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            if (result == false)
-            {
-                MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                Department_window Dialog = new Department_window();
+                Dialog.Title = "Продукты в холодильнике";
+
+                for (int i = 0; i < Fridge.Items.Count; i++)
+                {
+                    Rails Rail = Fridge.Items[i] as Rails;
+                    Dialog.Department.Items.Add(Rail);
+                }
+
+                bool? result = Dialog.ShowDialog();
+
+                if (result == true)
+                {
+                    MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (result == false)
+                {
+                    MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
         private void Storage_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            Process_window Dialog = new Process_window();
-            Dialog.Title = "Продукты на складе";
-
-            bool? result = Dialog.ShowDialog();
-
-            if (result == true)
+            if (Storage.Items.Count != 0)
             {
-                MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            if (result == false)
-            {
-                MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                Process_window Dialog = new Process_window();
+                Dialog.Title = "Продукты на складе";
+
+                for (int i = 0; i < Storage.Items.Count; i++)
+                {
+                    Rails Rail = Storage.Items[i] as Rails;
+                    Dialog.Department.Items.Add(Rail);
+                }
+
+                bool? result = Dialog.ShowDialog();
+
+                if (result == true)
+                {
+                    MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (result == false)
+                {
+                    MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
         private void Furnace_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            Process_window Dialog = new Process_window();
-            Dialog.Title = "Продукты в печи";
-
-            bool? result = Dialog.ShowDialog();
-
-            if (result == true)
+            if (Furnace.Items.Count != 0)
             {
-                MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            if (result == false)
-            {
-                MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+                Process_window Dialog = new Process_window();
+                Dialog.Title = "Продукты в печи";
+
+                for (int i = 0; i < Furnace.Items.Count; i++)
+                {
+                    Rails Rail = Furnace.Items[i] as Rails;
+                    Dialog.Department.Items.Add(Rail);
+                }
+
+                bool? result = Dialog.ShowDialog();
+
+                if (result == true)
+                {
+                    MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (result == false)
+                {
+                    MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }  
         }
 
         private void Mill_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            Process_window Dialog = new Process_window();
-            Dialog.Title = "Продукты на прокате";
-
-            bool? result = Dialog.ShowDialog();
-
-            if (result == true)
+            if (Mill.Items.Count != 0)
             {
-                MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            if (result == false)
-            {
-                MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                Process_window Dialog = new Process_window();
+                Dialog.Title = "Продукты на прокате";
+
+                for (int i = 0; i < Mill.Items.Count; i++)
+                {
+                    Rails Rail = Mill.Items[i] as Rails;
+                    Dialog.Department.Items.Add(Rail);
+                }
+
+                bool? result = Dialog.ShowDialog();
+
+                if (result == true)
+                {
+                    MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (result == false)
+                {
+                    MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
         private void Add_fridge_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            Process_window Dialog = new Process_window();
-            Dialog.Title = "Продукты в хранилище";
-
-            bool? result = Dialog.ShowDialog();
-
-            if (result == true)
+            if (Add_fridge.Items.Count != 0)
             {
-                MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            if (result == false)
-            {
-                MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                Process_window Dialog = new Process_window();
+                Dialog.Title = "Продукты в хранилище";
+
+                for (int i = 0; i < Add_fridge.Items.Count; i++)
+                {
+                    Rails Rail = Add_fridge.Items[i] as Rails;
+                    Dialog.Department.Items.Add(Rail);
+                }
+
+                bool? result = Dialog.ShowDialog();
+
+                if (result == true)
+                {
+                    MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (result == false)
+                {
+                    MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
         private void Сheckup_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            Process_window Dialog = new Process_window();
-            Dialog.Title = "Продукты на контроле";
-
-            bool? result = Dialog.ShowDialog();
-
-            if (result == true)
+            if (Checkup.Items.Count != 0)
             {
-                MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            if (result == false)
-            {
-                MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                Process_window Dialog = new Process_window();
+                Dialog.Title = "Продукты на контроле";
+
+                for (int i = 0; i < Checkup.Items.Count; i++)
+                {
+                    Rails Rail = Checkup.Items[i] as Rails;
+                    Dialog.Department.Items.Add(Rail);
+                }
+
+                bool? result = Dialog.ShowDialog();
+
+                if (result == true)
+                {
+                    MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (result == false)
+                {
+                    MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 
         private void Shipment_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            Process_window Dialog = new Process_window();
-            Dialog.Title = "Продукты на погрузке";
-
-            bool? result = Dialog.ShowDialog();
-
-            if (result == true)
+            if (Shipment.Items.Count != 0)
             {
-                MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            if (result == false)
-            {
-                MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                Process_window Dialog = new Process_window();
+                Dialog.Title = "Продукты на погрузке";
+
+                for (int i = 0; i < Shipment.Items.Count; i++)
+                {
+                    Rails Rail = Shipment.Items[i] as Rails;
+                    Dialog.Department.Items.Add(Rail);
+                }
+
+                bool? result = Dialog.ShowDialog();
+
+                if (result == true)
+                {
+                    MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (result == false)
+                {
+                    MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
     }
