@@ -30,8 +30,8 @@ namespace EVRAZ_Project
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             string connect = ConfigurationManager.ConnectionStrings["EVRAZ_Project.Properties.Settings.EvrazDB_TestConnectionString"].ConnectionString;
-            string sql1 = "SELECT ID,Prof_name FROM Profile_Prod";
-            string sql2 = "SELECT ID,Marka_type FROM Marka_Prod";
+            string sql1 = "SELECT Prof_name FROM Profile_Prod";
+            string sql2 = "SELECT Marka_type FROM Marka_Prod";
             using (SqlDataAdapter adapter = new SqlDataAdapter(sql1, connect))
             {
                 DataTable db = new DataTable();
@@ -39,8 +39,6 @@ namespace EVRAZ_Project
                 Profile.ItemsSource = db.DefaultView;
                 //Отображение
                 Profile.DisplayMemberPath = "Prof_name";
-                //Вроде как при выборе Профиля будет передаваться соответствующий ID
-                Profile.SelectedValuePath = "ID";
             }
             using (SqlDataAdapter adapter = new SqlDataAdapter(sql2, connect))
             {
@@ -49,9 +47,24 @@ namespace EVRAZ_Project
                 Steel_grade.ItemsSource = db.DefaultView;
                 //Отображение
                 Steel_grade.DisplayMemberPath = "Marka_type";
-                //Вроде как при выборе Марки будет передаваться соответствующий ID
-                Steel_grade.SelectedValuePath = "ID";
             }
+            //TODOO: этот код работает для базы данных внутри проекта P.S. Работает,
+            //но при смене данных в настоящей бд данные здесь тоже меняются;
+            // Создание набора данных
+            /*var dataSet = new EvrazDB_TestDataSet();
+
+            // Загрузка данных из таблицы "Mark"
+            var tableAdapter = new EvrazDB_TestDataSetTableAdapters.Marka_ProdTableAdapter();
+            tableAdapter.Fill(dataSet.Marka_Prod);
+
+            // Очистка ComboBox перед добавлением новых элементов
+            Steel_grade.Items.Clear();
+
+            // Добавление элементов в ComboBox из таблицы "Mark"
+            foreach (EvrazDB_TestDataSet.Marka_ProdRow row in dataSet.Marka_Prod.Rows)
+            {
+                Steel_grade.Items.Add(row.Marka_type);
+            }*/
         }
 
         /*private void MainWindow_Load(object sender, EventArgs e)

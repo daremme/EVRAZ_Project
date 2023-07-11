@@ -26,12 +26,65 @@ namespace EVRAZ_Project
 
         private void Next_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Department.Items.Count>0)
+            {
+                Rails rails = new Rails();
+                rails = Department.Items[0] as Rails;
+                //С поставки в печь
+                if (rails.Position == 0 && Department.SelectedIndex >= 0)
+                {
+                    rails = Department.SelectedItem as Rails;
+                    rails.Position = 2;
+                    MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); ;
+                    k.Delivery.Items.Remove(rails);
+                    Department.Items.Remove(rails);
+                    k.Furnace.Items.Add(rails);
+                }
+                //С холодильника на контроль
+                if (rails.Position == 4 && Department.SelectedIndex >= 0)
+                {
+                    rails = Department.SelectedItem as Rails;
+                    rails.Position = 6;
+                    MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); ;
+                    k.Fridge.Items.Remove(rails);
+                    Department.Items.Remove(rails);
+                    k.Checkup.Items.Add(rails);
+                }
+            }
         }
 
-        private void Cancel_Click(object sender, RoutedEventArgs e)
+            private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
+        }
+
+        private void Storage_Click(object sender, RoutedEventArgs e)
+        {
+            if (Department.Items.Count > 0)
+            {
+                Rails rails = new Rails();
+                rails = Department.Items[0] as Rails;
+                //С поставки на склад
+                if (rails.Position == 0 && Department.SelectedIndex >= 0)
+                {
+                    rails = Department.SelectedItem as Rails;
+                    rails.Position = 1;
+                    MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); ;
+                    k.Delivery.Items.Remove(rails);
+                    Department.Items.Remove(rails);
+                    k.Storage.Items.Add(rails);
+                }
+                //С холодильника в хранилище
+                if (rails.Position == 4 && Department.SelectedIndex >= 0)
+                {
+                    rails = Department.SelectedItem as Rails;
+                    rails.Position = 5;
+                    MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); ;
+                    k.Fridge.Items.Remove(rails);
+                    Department.Items.Remove(rails);
+                    k.Add_fridge.Items.Add(rails);
+                }
+            }
         }
     }
 }
