@@ -10,20 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Data.SqlClient;
-using System.Data;
 
 namespace EVRAZ_Project
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для Control_window.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Control_window : Window
     {
-        DataTable db;
-        public MainWindow()
+        public Control_window()
         {
             InitializeComponent();
         }
