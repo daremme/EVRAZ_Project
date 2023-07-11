@@ -27,5 +27,22 @@ namespace EVRAZ_Project
         {
             InitializeComponent();
         }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            string sql1 = "SELECT TYPE FROM Type_Ved";
+            db = new DataTable();
+            SqlConnection conn;
+            conn = new SqlConnection(@"Data Source = KOMPIK\SQLEXPRESS01; Initial Catalog = EvrazDB_Test; Integrated Security = true");
+            SqlCommand command = new SqlCommand(sql1, conn);
+            conn.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read()) 
+            {
+                string item = reader["TYPE"].ToString();
+                Steel_grade.Items.Add(item);
+            }
+            reader.Close();
+            conn.Close();
+        }
     }
 }
