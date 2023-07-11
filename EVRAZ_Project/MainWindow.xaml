@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EVRAZ_Project"
         mc:Ignorable="d"
-        Title="Мониторинг" Height="900" Width="1600">
+        Title="Мониторинг" Height="900" Width="1600" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />

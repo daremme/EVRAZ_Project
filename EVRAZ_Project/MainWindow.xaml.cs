@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace EVRAZ_Project
 {
@@ -20,9 +22,27 @@ namespace EVRAZ_Project
     /// </summary>
     public partial class MainWindow : Window
     {
+        DataTable db;
         public MainWindow()
         {
             InitializeComponent();
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            string sql1 = "SELECT TYPE FROM Type_Ved";
+            db = new DataTable();
+            SqlConnection conn;
+            conn = new SqlConnection(@"Data Source = KOMPIK\SQLEXPRESS01; Initial Catalog = EvrazDB_Test; Integrated Security = true");
+            SqlCommand command = new SqlCommand(sql1, conn);
+            conn.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read()) 
+            {
+                string item = reader["TYPE"].ToString();
+                Steel_grade.Items.Add(item);
+            }
+            reader.Close();
+            conn.Close();
         }
     }
 }
