@@ -70,8 +70,8 @@
                 <ComboBox x:Name="Type_defect" Text="Выберете тип дефекта" IsEditable="True" FontSize="15" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" Margin="15,0,15,15" VerticalAlignment="Top" Height="30" />
                 <TextBox x:Name="Lenght_defect" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="Введите длину дефекта" VerticalAlignment="Top" Margin="15,0,15,40" FontSize="15" Height="30" />
 
-                <Button x:Name="Cancel" Grid.Column="0" Grid.Row="1" Content="Отмена" FontSize="15"  Margin="15,5,15,15" Background="Red"/>
-                <Button x:Name="Done" Grid.Column="1" Grid.Row="1" Content="Готово" FontSize="15"  Margin="15,5,15,15" Background="Orange"/>
+                <Button x:Name="Cancel" Grid.Column="0" Grid.Row="1" Content="Отмена" FontSize="15"  Margin="15,5,15,15" Background="Red" IsCancel="True" Click="Cancel_Click"/>
+                <Button x:Name="Done" Grid.Column="1" Grid.Row="1" Content="Готово" FontSize="15"  Margin="15,5,15,15" Background="Orange" IsDefault="True" Click="Done_Click"/>
             </Grid>
         </StackPanel>
     </Grid>
