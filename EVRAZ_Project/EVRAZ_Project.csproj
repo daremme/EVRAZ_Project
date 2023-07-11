@@ -46,6 +46,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,6 +71,11 @@
     </Compile>
     <Compile Include="Department_window.xaml.cs">
       <DependentUpon>Department_window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EvrazDB_TestDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EvrazDB_TestDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Info_window.xaml.cs">
       <DependentUpon>Info_window.xaml</DependentUpon>
@@ -134,6 +140,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="EvrazDB_TestDataSet.xsc">
+      <DependentUpon>EvrazDB_TestDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="EvrazDB_TestDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EvrazDB_TestDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="EvrazDB_TestDataSet.xss">
+      <DependentUpon>EvrazDB_TestDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

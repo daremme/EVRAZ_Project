@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 namespace EVRAZ_Project
 {
@@ -22,33 +23,41 @@ namespace EVRAZ_Project
     /// </summary>
     public partial class MainWindow : Window
     {
-        DataTable db;
         public MainWindow()
         {
             InitializeComponent();
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            string sql1 = "SELECT TYPE FROM Type_Ved";
-            db = new DataTable();
-            SqlConnection conn;
-            conn = new SqlConnection(@"Data Source = KOMPIK\SQLEXPRESS01; Initial Catalog = EvrazDB_Test; Integrated Security = true");
-            SqlCommand command = new SqlCommand(sql1, conn);
-            conn.Open();
-            SqlDataReader reader = command.ExecuteReader();
-            while (reader.Read()) 
+            string connect = ConfigurationManager.ConnectionStrings["EVRAZ_Project.Properties.Settings.EvrazDB_TestConnectionString"].ConnectionString;
+            string sql1 = "SELECT ID,Prof_name FROM Profile_Prod";
+            string sql2 = "SELECT ID,Marka_type FROM Marka_Prod";
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sql1, connect))
             {
-                string item = reader["TYPE"].ToString();
-                Steel_grade.Items.Add(item);
+                DataTable db = new DataTable();
+                adapter.Fill(db);
+                Profile.ItemsSource = db.DefaultView;
+                //Отображение
+                Profile.DisplayMemberPath = "Prof_name";
+                //Вроде как при выборе Профиля будет передаваться соответствующий ID
+                Profile.SelectedValuePath = "ID";
             }
-            reader.Close();
-            conn.Close();
+            using (SqlDataAdapter adapter = new SqlDataAdapter(sql2, connect))
+            {
+                DataTable db = new DataTable();
+                adapter.Fill(db);
+                Steel_grade.ItemsSource = db.DefaultView;
+                //Отображение
+                Steel_grade.DisplayMemberPath = "Marka_type";
+                //Вроде как при выборе Марки будет передаваться соответствующий ID
+                Steel_grade.SelectedValuePath = "ID";
+            }
         }
 
-        private void MainWindow_Load(object sender, EventArgs e)
+        /*private void MainWindow_Load(object sender, EventArgs e)
         {
             
-        }
+        }*/
         int k = 0;
         int m = 0;
         int n = 0;
@@ -135,7 +144,5 @@ namespace EVRAZ_Project
             MessageBox.Show("awggr", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
 
         }
-
-
     }
 }
