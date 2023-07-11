@@ -14,6 +14,11 @@ namespace EVRAZ_Project
 
         private int _Steel_grade, _Profile, _Year, _Position;
 
+        public override string ToString()
+        {
+            return "Балка "+_Stamp;
+        }
+
         public string Stamp
         {
             set { _Stamp = value; }

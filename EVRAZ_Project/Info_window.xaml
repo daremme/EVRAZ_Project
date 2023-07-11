@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EVRAZ_Project"
         mc:Ignorable="d"
-        Title="Info_window" Height="340" Width="350">
+        Title="Информация о продукте" Height="340" Width="350" Closing="Window_Closing">
     <StackPanel>
         <Label Content="Информация о продукте" HorizontalAlignment="Stretch" Margin="15,10,15,10" VerticalAlignment="Top"  FontSize="25" />
 
@@ -34,8 +34,8 @@
             <TextBox x:Name="Maker" Grid.Column="1" Grid.Row="3" Height="22" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="0,5,15,10" FontSize="15" Width="140" />
             <TextBox x:Name="Year" Grid.Column="1" Grid.Row="4" Height="22" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="0,5,15,10" FontSize="15" Width="140" />
 
-            <Button x:Name="Cancel" Grid.Column="0" Grid.Row="6" Content="Отмена" FontSize="15"  Margin="15,5,15,15" Background="Red" />
-            <Button x:Name="Done" Grid.Column="1" Grid.Row="6" Content="Готово" FontSize="15"  Margin="15,5,15,15" Background="Orange"/>
+            <Button x:Name="Cancel" Grid.Column="0" Grid.Row="6" Content="Отмена" FontSize="15"  Margin="15,5,15,15" Background="Red" Click="Cancel_Click" />
+            <Button x:Name="Done" Grid.Column="1" Grid.Row="6" Content="Готово" FontSize="15"  Margin="15,5,15,15" Background="Orange" Click="Done_Click"/>
         </Grid>
     </StackPanel>
 

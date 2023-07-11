@@ -19,8 +19,8 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="Cancel" Grid.Column="0" Grid.Row="0" Content="Отмена" FontSize="15"  Margin="15,5,15,15" Background="Yellow"/>
-                <Button x:Name="Storage" Grid.Column="1" Grid.Row="0" Content="На прокат" FontSize="15"  Margin="15,5,15,15" Background="Orange" />
+                <Button x:Name="Cancel" Grid.Column="0" Grid.Row="0" Content="Отмена" FontSize="15"  Margin="15,5,15,15" Background="Yellow" Click="Cancel_Click" IsCancel="True"/>
+                <Button x:Name="Storage" Grid.Column="1" Grid.Row="0" Content="На прокат" FontSize="15"  Margin="15,5,15,15" Background="Orange" Click="Storage_Click" IsDefault="True" />
 
             </Grid>
 

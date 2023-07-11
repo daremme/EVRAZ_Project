@@ -23,5 +23,15 @@ namespace EVRAZ_Project
         {
             InitializeComponent();
         }
+
+        private void Next_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+        }
     }
 }
