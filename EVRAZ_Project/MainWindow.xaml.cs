@@ -38,6 +38,7 @@ namespace EVRAZ_Project
                 DataTable db = new DataTable();
                 adapter.Fill(db);
                 Profile.ItemsSource = db.DefaultView;
+
                 //Отображение
                 Profile.DisplayMemberPath = "Prof_name";
             }
@@ -126,7 +127,7 @@ namespace EVRAZ_Project
                     throw new Exception("Дата введена неверно");
                 }
 
-                string[] time = Time.Text.Trim().Split(new char[] { ':', '.', ',', '\\' });
+                string[] time = Time.Text.Trim().Split(new char[] { ':', '.', ',', '\\', '/' });
                 if (time.Length != 2)
                 {
                     Time.Focus();
@@ -182,16 +183,46 @@ namespace EVRAZ_Project
 
                     Delivery.Items.Add(Rail);
 
+                    int ID_ = 0;
+
                     //string connect = ConfigurationManager.ConnectionStrings["EVRAZ_Project.Properties.Settings.EvrazDB_TestConnectionString"].ConnectionString;
-                    //string sql2 = "SELECT Marka_type FROM Marka_Prod";
-                    //using (SqlDataAdapter adapter = new SqlDataAdapter(sql2, connect))
-                    //{
-                    //    DataTable db = new DataTable();
-                    //    adapter.Fill(db);
-                    //    Profile.ItemsSource = db.DefaultView;
-                    //    Отображение
-                    //    Profile.DisplayMemberPath = "Prof_name";
-                    //}
+                    string sql_char = $"INSERT INTO Charact_Prod(ID,Lenght,Width,Thiickness,Year,Creater) VALUES ('{ID_}','{Rail.Length}', '{Rail.Width}','{Rail.Height}','{Rail.Year}','{Rail.Maker}')";
+                    string sql_prod = $"INSERT INTO Products_Ved(Kleim,Profile,Marka,ID_Place) VALUES ('{Rail.Stamp}','{Rail.Profile_ID}','{Rail.Steel_grade_ID}','{Rail.Position}')";
+                    
+                    string test = $"select ID from Products_Ved where Kleim='{Rail.Stamp}'";
+                    using (SqlConnection connection = new SqlConnection(@"Data Source = KOMPIK\SQLEXPRESS01; Initial Catalog = EvrazDB_Test; Integrated Security = true"))
+                    {
+                        connection.Open();
+
+                        
+                        using (SqlCommand command = new SqlCommand(sql_prod, connection))
+                        {
+                            if (command.ExecuteNonQuery() == 1)
+                            {
+                                MessageBox.Show("Suka", "Blyat1");
+                            }
+                        }
+                        using (SqlCommand command = new SqlCommand(test, connection))
+                        {
+
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    ID_ = reader.GetInt32(0);
+                                    MessageBox.Show(ID_.ToString(), "Blyat1");
+                                }
+                            }
+                        }
+                        using (SqlCommand command = new SqlCommand(sql_char, connection))
+                        {
+                            if (command.ExecuteNonQuery() == 1)
+                            {
+                                MessageBox.Show("Suka", "Blyat3");
+                            }
+                        }
+                        connection.Close();
+                    }
 
                 }
                 if (result == false)
@@ -313,7 +344,7 @@ namespace EVRAZ_Project
                 {
                     MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-            }  
+            }
         }
 
         private void Mill_PreviewMouseDown(object sender, MouseButtonEventArgs e)
