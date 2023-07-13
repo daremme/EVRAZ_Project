@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EVRAZ_Project"
         mc:Ignorable="d"
-        Title="Process_window" Height="380" Width="350">
+        Title="Process_window" Height="400" Width="350">
     <Grid>
         <StackPanel>
             <Grid>

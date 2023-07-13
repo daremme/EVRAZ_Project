@@ -95,7 +95,7 @@ namespace EVRAZ_Project
                     Department.Items.Remove(rails);
                     //В дальнейшем реализовать создание отчета и удаление из базы(наверное)
                 }
-                DialogResult = true;
+               // DialogResult = true;
             }
         }
     }

@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
+using System.Runtime.Remoting.Contexts;
 
 namespace EVRAZ_Project
 {
@@ -109,16 +110,16 @@ namespace EVRAZ_Project
                     Stamp.Focus();
                     throw new Exception("Не введено клеймо поступившей балки");
                 }
-                //if (Steel_grade.Text.Trim() == "")
-                //{
-                //    Steel_grade.Focus();
-                //    throw new Exception("Выберете марку стали поступившей балки");
-                //}
-                //if (Profile.Text.Trim() == "")
-                //{
-                //    Profile.Focus();
-                //    throw new Exception("Выберете профиль поступившей балки");
-                //}
+                if (Steel_grade.Text.Trim() == "")
+                {
+                    Steel_grade.Focus();
+                    throw new Exception("Выберете марку стали поступившей балки");
+                }
+                if (Profile.Text.Trim() == "")
+                {
+                    Profile.Focus();
+                    throw new Exception("Выберете профиль поступившей балки");
+                }
                 if (Date.Text.Trim() == "Выбор даты" || Date.Text.Trim() == "")
                 {
                     Date.Focus();
@@ -174,8 +175,24 @@ namespace EVRAZ_Project
                     Rail.Year = Convert.ToInt32(Dialog.Year.Text.Trim());
 
                     Rail.Position = 0;
+                    MessageBox.Show(Rail.Profile, "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Rail.Profile_ID.ToString(), "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(Profile.Text.Trim(), "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+
 
                     Delivery.Items.Add(Rail);
+
+                    //string connect = ConfigurationManager.ConnectionStrings["EVRAZ_Project.Properties.Settings.EvrazDB_TestConnectionString"].ConnectionString;
+                    //string sql2 = "SELECT Marka_type FROM Marka_Prod";
+                    //using (SqlDataAdapter adapter = new SqlDataAdapter(sql2, connect))
+                    //{
+                    //    DataTable db = new DataTable();
+                    //    adapter.Fill(db);
+                    //    Profile.ItemsSource = db.DefaultView;
+                    //    Отображение
+                    //    Profile.DisplayMemberPath = "Prof_name";
+                    //}
+
                 }
                 if (result == false)
                 {

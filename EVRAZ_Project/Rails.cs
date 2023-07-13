@@ -14,6 +14,8 @@ namespace EVRAZ_Project
 
         private int _Steel_grade, _Profile, _Year, _Position;
 
+
+
         public override string ToString()
         {
             return "Балка "+_Stamp;
@@ -73,17 +75,17 @@ namespace EVRAZ_Project
         {
             set
             {
-                if (Profile == "T58")
+                if (value == "Т58")
                     _Profile = 0;
-                else if (Profile == "P65")
+                if (value == "Р65")
                     _Profile = 1;
             }
             get
             {
                 if (_Profile == 0)
-                    return "T58";
+                    return "Т58";
                 else
-                    return "P65";
+                    return "Р65";
             }
         }
         public int Profile_ID
