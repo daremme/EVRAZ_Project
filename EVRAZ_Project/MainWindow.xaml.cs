@@ -16,6 +16,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 using System.Runtime.Remoting.Contexts;
+using System.Data.Entity.Infrastructure.Design;
 
 namespace EVRAZ_Project
 {
@@ -38,7 +39,6 @@ namespace EVRAZ_Project
                 DataTable db = new DataTable();
                 adapter.Fill(db);
                 Profile.ItemsSource = db.DefaultView;
-
                 //Отображение
                 Profile.DisplayMemberPath = "Prof_name";
             }
@@ -50,29 +50,9 @@ namespace EVRAZ_Project
                 //Отображение
                 Steel_grade.DisplayMemberPath = "Marka_type";
             }
-            //TODOO: этот код работает для базы данных внутри проекта P.S. Работает,
-            //но при смене данных в настоящей бд данные здесь тоже меняются;
-            // Создание набора данных
-            /*var dataSet = new EvrazDB_TestDataSet();
-
-            // Загрузка данных из таблицы "Mark"
-            var tableAdapter = new EvrazDB_TestDataSetTableAdapters.Marka_ProdTableAdapter();
-            tableAdapter.Fill(dataSet.Marka_Prod);
-
-            // Очистка ComboBox перед добавлением новых элементов
-            Steel_grade.Items.Clear();
-
-            // Добавление элементов в ComboBox из таблицы "Mark"
-            foreach (EvrazDB_TestDataSet.Marka_ProdRow row in dataSet.Marka_Prod.Rows)
-            {
-                Steel_grade.Items.Add(row.Marka_type);
-            }*/
         }
 
-        /*private void MainWindow_Load(object sender, EventArgs e)
-        {
-            
-        }*/
+
         int k = 0;
         int m = 0;
         int n = 0;
@@ -92,18 +72,11 @@ namespace EVRAZ_Project
                 m++;
             }
         }
-        private void Search_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (n == 0)
-            {
-                Search.Clear();
-                n++;
-            }
-        }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             bool q = false;
+
             try
             {
                 if (Stamp.Text.Trim() == "" || Stamp.Text.Trim() == "Введите номер клейма")
@@ -127,7 +100,7 @@ namespace EVRAZ_Project
                     throw new Exception("Дата введена неверно");
                 }
 
-                string[] time = Time.Text.Trim().Split(new char[] { ':', '.', ',', '\\', '/' });
+                string[] time = Time.Text.Trim().Split(new char[] { ':', '.', ',', '\\' });
                 if (time.Length != 2)
                 {
                     Time.Focus();
@@ -174,34 +147,33 @@ namespace EVRAZ_Project
                     Rail.Height = Convert.ToDouble(Dialog.Height.Text.Trim());
                     Rail.Maker = Dialog.Maker.Text.Trim();
                     Rail.Year = Convert.ToInt32(Dialog.Year.Text.Trim());
-
+                    Rail.PrewiosPos = 0;
                     Rail.Position = 0;
-                    MessageBox.Show(Rail.Profile, "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                    MessageBox.Show(Rail.Profile_ID.ToString(), "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                    MessageBox.Show(Profile.Text.Trim(), "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                    Reports reports = new Reports();
+                    reports.Position = Rail.Position;
+                    string[] time = Time.Text.Trim().Split(new char[] { ':', '.', ',', '\\', '/' });
+                    reports.Time = time[0] + ":" + time[1];
+                    reports.Date = Date.Text.Trim();
+                    reports.Type = 0;
+                    reports.Name = Environment.UserName;
+                    reports._Rails = Rail;
 
                     Delivery.Items.Add(Rail);
+                    Documents.Items.Add(reports);
 
-                    int ID_ = 0;
+                    /*int ID_ = 0;
 
-                    //string connect = ConfigurationManager.ConnectionStrings["EVRAZ_Project.Properties.Settings.EvrazDB_TestConnectionString"].ConnectionString;
+                    string connect = ConfigurationManager.ConnectionStrings["EVRAZ_Project.Properties.Settings.EvrazDB_TestConnectionString"].ConnectionString;
                     string sql_char = $"INSERT INTO Charact_Prod(ID,Lenght,Width,Thiickness,Year,Creater) VALUES ('{ID_}','{Rail.Length}', '{Rail.Width}','{Rail.Height}','{Rail.Year}','{Rail.Maker}')";
                     string sql_prod = $"INSERT INTO Products_Ved(Kleim,Profile,Marka,ID_Place) VALUES ('{Rail.Stamp}','{Rail.Profile_ID}','{Rail.Steel_grade_ID}','{Rail.Position}')";
-                    
+
                     string test = $"select ID from Products_Ved where Kleim='{Rail.Stamp}'";
-                    using (SqlConnection connection = new SqlConnection(@"Data Source = KOMPIK\SQLEXPRESS01; Initial Catalog = EvrazDB_Test; Integrated Security = true"))
+                    using (SqlConnection connection = new SqlConnection(connect))
                     {
                         connection.Open();
 
-                        
-                        using (SqlCommand command = new SqlCommand(sql_prod, connection))
-                        {
-                            if (command.ExecuteNonQuery() == 1)
-                            {
-                                MessageBox.Show("Suka", "Blyat1");
-                            }
-                        }
+
+                        using (SqlCommand command = new SqlCommand(sql_prod, connection)) { }
                         using (SqlCommand command = new SqlCommand(test, connection))
                         {
 
@@ -210,33 +182,25 @@ namespace EVRAZ_Project
                                 if (reader.Read())
                                 {
                                     ID_ = reader.GetInt32(0);
-                                    MessageBox.Show(ID_.ToString(), "Blyat1");
                                 }
                             }
                         }
-                        using (SqlCommand command = new SqlCommand(sql_char, connection))
-                        {
-                            if (command.ExecuteNonQuery() == 1)
-                            {
-                                MessageBox.Show("Suka", "Blyat3");
-                            }
-                        }
+                        using (SqlCommand command = new SqlCommand(sql_char, connection)) { }
                         connection.Close();
-                    }
+                    }*/
 
+
+
+                    MessageBox.Show(Rail.ToString() + " успешно добавлена", "Оповещение", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(reports.Name, "Оповещение", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                if (result == false)
+                /*if (command.ExecuteNonQuery() == 1)
                 {
-                    MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                    MessageBox.Show("Suka", "Blyat3");
+                }*/
             }
-
-
-
+           // connection.Close();
         }
-
-
-
         private void Find_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("awggr", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -450,5 +414,40 @@ namespace EVRAZ_Project
                 }
             }
         }
+
+        private void Documents_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Report_window Dialog = new Report_window();
+            Dialog.Title = "Создание ведомости";
+            Reports report = Documents.SelectedItem as Reports;
+            if (report._Rails.Position == 0)
+            {
+                Dialog.Steel_grade.Text = report._Rails.Steel_grade;
+                Dialog.Profile.Text = report._Rails.Profile;
+                Dialog.Stamp.Text = report._Rails.Stamp;
+                Dialog.Length.Text = report._Rails.Length.ToString();
+                Dialog.Width.Text = report._Rails.Width.ToString();
+                Dialog.Year.Text = report._Rails.Year.ToString();
+                Dialog.Height.Text = report._Rails.Height.ToString();
+                Dialog.Maker.Text = report._Rails.Maker;
+                Dialog.Time.Text = report.Time.ToString();
+                DateTime date = DateTime.Parse(report.Date);
+                Dialog.Date.SelectedDate = date;
+                Dialog.ShowDialog();
+            }
+            else
+            {
+                Dialog.Steel_grade.Text = report._Rails.Steel_grade;
+                Dialog.Profile.Text = report._Rails.Profile;
+                Dialog.Stamp.Text = report._Rails.Stamp;
+                Dialog.Length.Text = report._Rails.Length.ToString();
+                Dialog.Width.Text = report._Rails.Width.ToString();
+                Dialog.Year.Text = report._Rails.Year.ToString();
+                Dialog.Height.Text = report._Rails.Height.ToString();
+                Dialog.Maker.Text = report._Rails.Maker;
+                Dialog.ShowDialog();
+            }
+        }
     }
 }
+

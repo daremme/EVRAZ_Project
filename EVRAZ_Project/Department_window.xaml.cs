@@ -30,6 +30,7 @@ namespace EVRAZ_Project
             {
                 Rails rails = new Rails();
                 rails = Department.Items[0] as Rails;
+                Reports reports = new Reports();
                 //С поставки в печь
                 if (rails.Position == 0 && Department.SelectedIndex >= 0)
                 {
@@ -39,6 +40,9 @@ namespace EVRAZ_Project
                     k.Delivery.Items.Remove(rails);
                     Department.Items.Remove(rails);
                     k.Furnace.Items.Add(rails);
+                    reports._Rails = rails;
+                    k.Documents.Items.Add(reports);
+                    k.Documents.Items.Add(reports);
                 }
                 //С холодильника на контроль
                 if (rails.Position == 4 && Department.SelectedIndex >= 0)
@@ -49,6 +53,9 @@ namespace EVRAZ_Project
                     k.Fridge.Items.Remove(rails);
                     Department.Items.Remove(rails);
                     k.Checkup.Items.Add(rails);
+                    reports._Rails = rails;
+                    k.Documents.Items.Add(reports);
+                    k.Documents.Items.Add(reports);
                 }
             }
         }
@@ -64,25 +71,32 @@ namespace EVRAZ_Project
             {
                 Rails rails = new Rails();
                 rails = Department.Items[0] as Rails;
+                Reports reports = new Reports();
                 //С поставки на склад
                 if (rails.Position == 0 && Department.SelectedIndex >= 0)
                 {
                     rails = Department.SelectedItem as Rails;
                     rails.Position = 1;
+                    rails.PrewiosPos = 1;
                     MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); ;
                     k.Delivery.Items.Remove(rails);
                     Department.Items.Remove(rails);
                     k.Storage.Items.Add(rails);
+                    reports._Rails = rails;
+                    k.Documents.Items.Add(reports);   
                 }
                 //С холодильника в хранилище
                 if (rails.Position == 4 && Department.SelectedIndex >= 0)
                 {
                     rails = Department.SelectedItem as Rails;
                     rails.Position = 5;
+                    rails.PrewiosPos = 2;
                     MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); ;
                     k.Fridge.Items.Remove(rails);
                     Department.Items.Remove(rails);
                     k.Add_fridge.Items.Add(rails);
+                    reports._Rails = rails;
+                    k.Documents.Items.Add(reports);
                 }
             }
         }

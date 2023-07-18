@@ -10,7 +10,7 @@
         <StackPanel>
             <Grid>
                 <Border Background="LightGray" Margin="15,20,15,20" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
-                    <ListBox x:Name="Department"  HorizontalAlignment="Stretch" Margin="10,10,10,10"  VerticalAlignment="Top" Height="250" Background="LightGray" BorderThickness="0"/>
+                    <ListBox x:Name="Department"  HorizontalAlignment="Stretch" Margin="10,10,10,10"  VerticalAlignment="Top" Height="250" Background="LightGray" BorderThickness="0" FontSize="20"/>
                 </Border>
             </Grid>
             <Grid>

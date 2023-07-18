@@ -12,7 +12,7 @@ namespace EVRAZ_Project
 
         private double _Length, _Width, _Height;
 
-        private int _Steel_grade, _Profile, _Year, _Position;
+        private int _Steel_grade, _Profile, _Year, _Position, _PrewiosPos;
 
 
 
@@ -123,6 +123,10 @@ namespace EVRAZ_Project
             set { _Position = value; }
             get { return _Position; }
         }
-
+        public int PrewiosPos
+        {
+            set { _PrewiosPos = value; }
+            get { return _PrewiosPos; }
+        }
     }
 }

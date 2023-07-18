@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EVRAZ_Project"
         mc:Ignorable="d"
-        Title="Control_window" Height="550" Width="600">
+        Title="Control_window" Height="470" Width="600">
     <Grid>
         <StackPanel>
             <Label Content="Информация о продукции" HorizontalAlignment="Stretch" Margin="15,5,15,0" VerticalAlignment="Top"  FontSize="25" />
@@ -45,7 +45,7 @@
                 <TextBox x:Name="Maker" Grid.Column="0" Grid.Row="5" Height="22" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="15,0,15,10" FontSize="15" Width="168" Grid.ColumnSpan="2" />
                 <TextBox x:Name="Year" Grid.Column="1" Grid.Row="5" Height="22" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="15,0,15,10" FontSize="15" Width="168" Grid.ColumnSpan="2" />
             </Grid>
-            
+
             <Label Content="Дата и время отчета" HorizontalAlignment="Stretch" Margin="15,5,15,10" VerticalAlignment="Top"  FontSize="25" />
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -55,9 +55,7 @@
                 <DatePicker  x:Name="Date" Margin="15,0,15,15" Grid.Column="0" Grid.Row="0" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" Foreground="Black" FontSize="15"  VerticalAlignment="Top" Height="30" />
                 <TextBox x:Name="Time" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="Введите время" VerticalAlignment="Top" Margin="15,0,15,15" FontSize="15" Height="30" />
             </Grid>
-            
-            
-            <Label Content="Информация о дефектах" HorizontalAlignment="Stretch" Margin="15,5,15,10" VerticalAlignment="Top"  FontSize="25" />
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -67,9 +65,8 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <ComboBox x:Name="Type_defect" Text="Выберете тип дефекта" IsEditable="True" FontSize="15" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" Margin="15,0,15,15" VerticalAlignment="Top" Height="30" />
-                <TextBox x:Name="Lenght_defect" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="Введите длину дефекта" VerticalAlignment="Top" Margin="15,0,15,40" FontSize="15" Height="30" />
 
+                <Button x:Name="Add_def" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Content="Информация о дефектах" FontSize="15"  Margin="15,10,15,25" Background="Yellow" IsCancel="True" Click="Cancel_Click"/>
                 <Button x:Name="Cancel" Grid.Column="0" Grid.Row="1" Content="Отмена" FontSize="15"  Margin="15,5,15,15" Background="Red" IsCancel="True" Click="Cancel_Click"/>
                 <Button x:Name="Done" Grid.Column="1" Grid.Row="1" Content="Готово" FontSize="15"  Margin="15,5,15,15" Background="Orange" IsDefault="True" Click="Done_Click"/>
             </Grid>

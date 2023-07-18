@@ -23,29 +23,29 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <ListBox x:Name="Documents" Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="5" HorizontalAlignment="Stretch"  Margin="50,59,50,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" />
-        <Label Grid.Column="3" Grid.Row="0" Grid.ColumnSpan="5" Content="Документооборот" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="50,15,50,15" Height="45" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="25" Background="LightGray" BorderBrush="Gray" BorderThickness="1" />
+        <ListBox x:Name="Documents" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="6" HorizontalAlignment="Stretch"  Margin="50,59,50,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" SelectionChanged="Documents_SelectionChanged" FontSize="20"/>
+        <Label Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="6" Content="Документооборот" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="50,15,50,15" Height="45" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="25" Background="LightGray" BorderBrush="Gray" BorderThickness="1" />
 
 
 
         <Label Grid.Column="0" Grid.Row="1" Content="Мониторинг" Grid.ColumnSpan="8" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="15,0,15,0" Height="70" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="40"/>
         <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Stretch" Grid.ColumnSpan="8" Height="1" Margin="0" Grid.Row="1" VerticalAlignment="Top"/>
 
-        <ListBox x:Name="Delivery" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Delivery_PreviewMouseDown" />
+        <ListBox x:Name="Delivery" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Delivery_PreviewMouseDown" FontSize="20" />
         <Label Grid.Column="0" Grid.Row="1" Content="Поставка" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="15,85,15,15" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="25" Background="Yellow" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Delivery_PreviewMouseDown" />
-        <ListBox x:Name="Storage" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Storage_PreviewMouseDown" />
+        <ListBox x:Name="Storage" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Storage_PreviewMouseDown" FontSize="20" />
         <Label Grid.Column="1" Grid.Row="1" Content="Склад" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="15,85,15,15" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="25" Background="Orange" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Storage_PreviewMouseDown" />
-        <ListBox x:Name="Furnace" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Furnace_PreviewMouseDown" />
+        <ListBox x:Name="Furnace" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Furnace_PreviewMouseDown" FontSize="20" />
         <Label Grid.Column="2" Grid.Row="1" Content="Печь" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="15,85,15,15" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="25" Background="Red" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Furnace_PreviewMouseDown" />
-        <ListBox x:Name="Mill" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Mill_PreviewMouseDown" />
+        <ListBox x:Name="Mill" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Mill_PreviewMouseDown" FontSize="20"/>
         <Label Grid.Column="3" Grid.Row="1" Content="Прокат" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="15,85,15,15" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="25" Background="Yellow" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Mill_PreviewMouseDown" />
-        <ListBox x:Name="Fridge" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Fridge_PreviewMouseDown" />
+        <ListBox x:Name="Fridge" Grid.Column="4" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Fridge_PreviewMouseDown" FontSize="20"/>
         <Label Grid.Column="4" Grid.Row="1" Content="Холодильник" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="15,85,15,15" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="25" Background="Orange" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Fridge_PreviewMouseDown" />
-        <ListBox x:Name="Add_fridge" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Add_fridge_PreviewMouseDown" />
+        <ListBox x:Name="Add_fridge" Grid.Column="5" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Add_fridge_PreviewMouseDown" FontSize="20" />
         <Label Grid.Column="5" Grid.Row="1" Content="Хранилище" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="15,85,15,15" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="25" Background="Red" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Add_fridge_PreviewMouseDown" />
-        <ListBox x:Name="Checkup" Grid.Column="6" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Сheckup_PreviewMouseDown" />
+        <ListBox x:Name="Checkup" Grid.Column="6" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Сheckup_PreviewMouseDown" FontSize="20" />
         <Label Grid.Column="6" Grid.Row="1" Content="Контроль" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="15,85,15,15" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="25" Background="Yellow" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Сheckup_PreviewMouseDown" />
-        <ListBox x:Name="Shipment" Grid.Column="7" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Shipment_PreviewMouseDown" />
+        <ListBox x:Name="Shipment" Grid.Column="7" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Shipment_PreviewMouseDown"  />
         <Label Grid.Column="7" Grid.Row="1" Content="Погрузка" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="15,85,15,15" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="25" Background="Orange" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Shipment_PreviewMouseDown" />
 
 
@@ -84,22 +84,6 @@
             </StackPanel>
             
         </Border>
-
-
-        <Border Grid.Column="2" BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Stretch" Margin="0,15,0,15" VerticalAlignment="Stretch" >
-            <StackPanel>
-                <Label Grid.Column="0" Grid.Row="0" Content="Поиск" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="-1,-1,-1,25" Height="45" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="25" Background="LightGray" BorderBrush="Gray" BorderThickness="1" />
-
-                <TextBox x:Name="Search" Height="23" TextWrapping="Wrap" Text="Введите номер клейма" VerticalAlignment="Top" Margin="15,0,15,10" FontSize="15" PreviewMouseDown="Search_PreviewMouseDown" />
-
-                <Button x:Name="Find" Content="Найти" FontSize="15"  Margin="15,5,15,35" Click="Find_Click"/>
-                <Button x:Name="Newer" Content="Сначала новые" FontSize="15"  Margin="15,5,15,15"/>
-                <Button x:Name="Older" Content="Сначала старые" FontSize="15"  Margin="15,5,15,15"/>
-            </StackPanel>
-
-        </Border>
-
-
 
     </Grid>
 

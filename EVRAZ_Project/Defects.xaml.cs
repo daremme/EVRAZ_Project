@@ -15,24 +15,18 @@ using System.Windows.Shapes;
 namespace EVRAZ_Project
 {
     /// <summary>
-    /// Логика взаимодействия для Report_window.xaml
+    /// Логика взаимодействия для Defects.xaml
     /// </summary>
-    public partial class Report_window : Window
+    public partial class Defects : Window
     {
-        public Report_window()
+        public Defects()
         {
             InitializeComponent();
         }
 
-        private void Cancel_Click(object sender, RoutedEventArgs e)
-        {
-            DialogResult = false;
-        }
-
         private void Done_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
-            MessageBox.Show("ВЫполнение запроса.......");
+
         }
     }
 }
