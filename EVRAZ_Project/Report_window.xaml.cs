@@ -27,6 +27,8 @@ namespace EVRAZ_Project
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
+            /*MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            k.Documents.SelectedIndex = -1;*/
         }
 
         private void Done_Click(object sender, RoutedEventArgs e)

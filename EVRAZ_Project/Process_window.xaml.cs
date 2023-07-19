@@ -26,9 +26,9 @@ namespace EVRAZ_Project
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = false;
+            
         }
-
+        
         private void Storage_Click(object sender, RoutedEventArgs e)
         {
             
@@ -36,17 +36,19 @@ namespace EVRAZ_Project
             {
                 Rails rails = new Rails();
                 rails = Department.Items[0] as Rails;
-                Reports reports = new Reports();
                 //Со склада в печь
                 if (rails.Position == 1 && Department.SelectedIndex >= 0)
                 {
                     rails = Department.SelectedItem as Rails;
                     rails.Position = 2;
-                    MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); ;
+                    MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
                     k.Storage.Items.Remove(rails);
                     Department.Items.Remove(rails);
                     k.Furnace.Items.Add(rails);
+                    Reports reports = new Reports();
                     reports._Rails = rails;
+                    reports.Position = rails.Position;
+                    reports.Name = Environment.UserName;
                     k.Documents.Items.Add(reports);
                     k.Documents.Items.Add(reports);
                 }
@@ -55,11 +57,13 @@ namespace EVRAZ_Project
                 {
                     rails = Department.SelectedItem as Rails;
                     rails.Position = 3;
-                    MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); ;
+                    MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); 
                     k.Furnace.Items.Remove(rails);
                     Department.Items.Remove(rails);
                     k.Mill.Items.Add(rails);
+                    Reports reports = new Reports();
                     reports._Rails = rails;
+                    reports.Name = Environment.UserName;
                     k.Documents.Items.Add(reports);
                     k.Documents.Items.Add(reports);
                 }
@@ -68,11 +72,14 @@ namespace EVRAZ_Project
                 {
                     rails = Department.SelectedItem as Rails;
                     rails.Position = 4;
-                    MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); ;
+                    MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); 
                     k.Mill.Items.Remove(rails);
                     Department.Items.Remove(rails);
                     k.Fridge.Items.Add(rails);
+                    Reports reports = new Reports();
                     reports._Rails = rails;
+                    reports.Position = rails.Position;
+                    reports.Name = Environment.UserName;
                     k.Documents.Items.Add(reports);
                     k.Documents.Items.Add(reports);
                 }
@@ -81,11 +88,14 @@ namespace EVRAZ_Project
                 {
                     rails = Department.SelectedItem as Rails;
                     rails.Position = 6;
-                    MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); ;
+                    MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); 
                     k.Add_fridge.Items.Remove(rails);
                     Department.Items.Remove(rails);
                     k.Checkup.Items.Add(rails);
+                    Reports reports = new Reports();
                     reports._Rails = rails;
+                    reports.Position = rails.Position;
+                    reports.Name = Environment.UserName;
                     k.Documents.Items.Add(reports);
                     k.Documents.Items.Add(reports);
                 }
@@ -94,11 +104,14 @@ namespace EVRAZ_Project
                 {
                     rails = Department.SelectedItem as Rails;
                     rails.Position = 7;
-                    MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); ;
+                    MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); 
                     k.Checkup.Items.Remove(rails);
                     Department.Items.Remove(rails);
                     k.Shipment.Items.Add(rails);
+                    Reports reports = new Reports();
                     reports._Rails = rails;
+                    reports.Position = rails.Position;
+                    reports.Name = Environment.UserName;
                     k.Documents.Items.Add(reports);
                     k.Documents.Items.Add(reports);
                 }
@@ -106,12 +119,11 @@ namespace EVRAZ_Project
                 if (rails.Position == 7 && Department.SelectedIndex >= 0)
                 {
                     rails = Department.SelectedItem as Rails;
-                    MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); ;
+                    MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); 
                     k.Shipment.Items.Remove(rails);
                     Department.Items.Remove(rails);
                     //В дальнейшем реализовать создание отчета и удаление из базы(наверное)
                 }
-               // DialogResult = true;
             }
         }
     }

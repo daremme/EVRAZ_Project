@@ -53,15 +53,15 @@ namespace EVRAZ_Project
         }
 
 
-        int k = 0;
+        
         int m = 0;
         int n = 0;
         private void Stamp_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (k == 0)
+            if (n == 0)
             {
                 Stamp.Clear();
-                k++;
+                n++;
             }
         }
         private void Time_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -100,7 +100,7 @@ namespace EVRAZ_Project
                     throw new Exception("Дата введена неверно");
                 }
 
-                string[] time = Time.Text.Trim().Split(new char[] { ':', '.', ',', '\\' });
+                string[] time = Time.Text.Trim().Split(new char[] { ':', '.', ',', '\\','/' });
                 if (time.Length != 2)
                 {
                     Time.Focus();
@@ -161,19 +161,22 @@ namespace EVRAZ_Project
                     Delivery.Items.Add(Rail);
                     Documents.Items.Add(reports);
 
-                    /*int ID_ = 0;
+                    int ID_ = 0;
 
                     string connect = ConfigurationManager.ConnectionStrings["EVRAZ_Project.Properties.Settings.EvrazDB_TestConnectionString"].ConnectionString;
-                    string sql_char = $"INSERT INTO Charact_Prod(ID,Lenght,Width,Thiickness,Year,Creater) VALUES ('{ID_}','{Rail.Length}', '{Rail.Width}','{Rail.Height}','{Rail.Year}','{Rail.Maker}')";
+                    
                     string sql_prod = $"INSERT INTO Products_Ved(Kleim,Profile,Marka,ID_Place) VALUES ('{Rail.Stamp}','{Rail.Profile_ID}','{Rail.Steel_grade_ID}','{Rail.Position}')";
 
-                    string test = $"select ID from Products_Ved where Kleim='{Rail.Stamp}'";
+                    string test = $"Select ID From Products_Ved where Kleim='{Rail.Stamp}'";
                     using (SqlConnection connection = new SqlConnection(connect))
                     {
                         connection.Open();
 
 
-                        using (SqlCommand command = new SqlCommand(sql_prod, connection)) { }
+                        using (SqlCommand command = new SqlCommand(sql_prod, connection)) 
+                        {
+                            command.ExecuteNonQuery();
+                        }
                         using (SqlCommand command = new SqlCommand(test, connection))
                         {
 
@@ -185,26 +188,19 @@ namespace EVRAZ_Project
                                 }
                             }
                         }
-                        using (SqlCommand command = new SqlCommand(sql_char, connection)) { }
+                        
                         connection.Close();
-                    }*/
-
-
-
-                    MessageBox.Show(Rail.ToString() + " успешно добавлена", "Оповещение", MessageBoxButton.OK, MessageBoxImage.Information);
-                    MessageBox.Show(reports.Name, "Оповещение", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    string sql_char = $"INSERT INTO Charact_Prod(ID,Lenght,Width,Thiickness,Year,Creater) VALUES ('{ID_}','{Rail.Length}', '{Rail.Width}','{Rail.Height}','{Rail.Year}','{Rail.Maker}')";
+                    using (SqlConnection connection = new SqlConnection(connect))
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(sql_char, connection)) { command.ExecuteNonQuery(); }
+                        connection.Close();
+                    }
+                    MessageBox.Show(Rail.ToString() + " добавлена", "Оповещение", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                /*if (command.ExecuteNonQuery() == 1)
-                {
-                    MessageBox.Show("Suka", "Blyat3");
-                }*/
             }
-           // connection.Close();
-        }
-        private void Find_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("awggr", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-
         }
 
         private void Delivery_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -222,14 +218,7 @@ namespace EVRAZ_Project
 
                 bool? result = Dialog.ShowDialog();
 
-                if (result == true)
-                {
-                    MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                if (result == false)
-                {
-                    MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                
             }
         }
 
@@ -248,14 +237,7 @@ namespace EVRAZ_Project
 
                 bool? result = Dialog.ShowDialog();
 
-                if (result == true)
-                {
-                    MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                if (result == false)
-                {
-                    MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+               
             }
         }
 
@@ -274,14 +256,7 @@ namespace EVRAZ_Project
 
                 bool? result = Dialog.ShowDialog();
 
-                if (result == true)
-                {
-                    MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                if (result == false)
-                {
-                    MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+               
             }
         }
 
@@ -300,14 +275,7 @@ namespace EVRAZ_Project
 
                 bool? result = Dialog.ShowDialog();
 
-                if (result == true)
-                {
-                    MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                if (result == false)
-                {
-                    MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+               
             }
         }
 
@@ -326,14 +294,7 @@ namespace EVRAZ_Project
 
                 bool? result = Dialog.ShowDialog();
 
-                if (result == true)
-                {
-                    MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                if (result == false)
-                {
-                    MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+               
             }
         }
 
@@ -352,14 +313,7 @@ namespace EVRAZ_Project
 
                 bool? result = Dialog.ShowDialog();
 
-                if (result == true)
-                {
-                    MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                if (result == false)
-                {
-                    MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+             
             }
         }
 
@@ -378,14 +332,7 @@ namespace EVRAZ_Project
 
                 bool? result = Dialog.ShowDialog();
 
-                if (result == true)
-                {
-                    MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                if (result == false)
-                {
-                    MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+               
             }
         }
 
@@ -404,24 +351,17 @@ namespace EVRAZ_Project
 
                 bool? result = Dialog.ShowDialog();
 
-                if (result == true)
-                {
-                    MessageBox.Show("Оке доке", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                if (result == false)
-                {
-                    MessageBox.Show("Галя отмена", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                
             }
         }
 
         private void Documents_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Report_window Dialog = new Report_window();
-            Dialog.Title = "Создание ведомости";
             Reports report = Documents.SelectedItem as Reports;
             if (report._Rails.Position == 0)
             {
+                Report_window Dialog = new Report_window();
+                Dialog.Title = "Создание ведомости";
                 Dialog.Steel_grade.Text = report._Rails.Steel_grade;
                 Dialog.Profile.Text = report._Rails.Profile;
                 Dialog.Stamp.Text = report._Rails.Stamp;
@@ -433,10 +373,29 @@ namespace EVRAZ_Project
                 Dialog.Time.Text = report.Time.ToString();
                 DateTime date = DateTime.Parse(report.Date);
                 Dialog.Date.SelectedDate = date;
+                Dialog.Date.IsEnabled = false;
+                Dialog.Time.IsReadOnly = true;
+                Dialog.Time.IsReadOnlyCaretVisible = false;
                 Dialog.ShowDialog();
             }
-            else
+            else if (report._Rails.Position == 6 && report.k==1)
             {
+                Control_window Dialog = new Control_window();
+                Dialog.Title = "Создание ведомости";
+                Dialog.Steel_grade.Text = report._Rails.Steel_grade;
+                Dialog.Profile.Text = report._Rails.Profile;
+                Dialog.Stamp.Text = report._Rails.Stamp;
+                Dialog.Length.Text = report._Rails.Length.ToString();
+                Dialog.Width.Text = report._Rails.Width.ToString();
+                Dialog.Year.Text = report._Rails.Year.ToString();
+                Dialog.Height.Text = report._Rails.Height.ToString();
+                Dialog.Maker.Text = report._Rails.Maker;
+                Dialog.ShowDialog();
+            }
+            else if (report._Rails.Position != 0 || report._Rails.Position != 6)
+            {
+                Report_window Dialog = new Report_window();
+                Dialog.Title = "Создание ведомости";
                 Dialog.Steel_grade.Text = report._Rails.Steel_grade;
                 Dialog.Profile.Text = report._Rails.Profile;
                 Dialog.Stamp.Text = report._Rails.Stamp;

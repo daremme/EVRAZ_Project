@@ -66,7 +66,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Button x:Name="Add_def" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Content="Информация о дефектах" FontSize="15"  Margin="15,10,15,25" Background="Yellow" IsCancel="True" Click="Cancel_Click"/>
+                <Button x:Name="Add_def" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Content="Информация о дефектах" FontSize="15"  Margin="15,10,15,25" Background="Yellow" IsCancel="True" Click="Add_def_Click"/>
                 <Button x:Name="Cancel" Grid.Column="0" Grid.Row="1" Content="Отмена" FontSize="15"  Margin="15,5,15,15" Background="Red" IsCancel="True" Click="Cancel_Click"/>
                 <Button x:Name="Done" Grid.Column="1" Grid.Row="1" Content="Готово" FontSize="15"  Margin="15,5,15,15" Background="Orange" IsDefault="True" Click="Done_Click"/>
             </Grid>

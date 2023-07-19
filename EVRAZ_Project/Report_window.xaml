@@ -57,7 +57,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <DatePicker  x:Name="Date" Margin="15,0,15,40" Grid.Column="0" Grid.Row="0" VerticalContentAlignment="Center" HorizontalAlignment="Stretch" Foreground="Black" FontSize="15"  VerticalAlignment="Top" Height="30" />
-                <TextBox x:Name="Time" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="Введите время" VerticalAlignment="Top" Margin="15,0,15,40" FontSize="15" Height="30" IsReadOnly="True" IsReadOnlyCaretVisible="False" />
+                <TextBox x:Name="Time" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="Введите время" VerticalAlignment="Top" Margin="15,0,15,40" FontSize="15" Height="30" />
 
                 <Button x:Name="Cancel" Grid.Column="0" Grid.Row="1" Content="Отмена" FontSize="15"  Margin="15,5,15,15" Background="Red" Click="Cancel_Click"/>
                 <Button x:Name="Done" Grid.Column="1" Grid.Row="1" Content="Готово" FontSize="15"  Margin="15,5,15,15" Background="Orange" Click="Done_Click"/>
