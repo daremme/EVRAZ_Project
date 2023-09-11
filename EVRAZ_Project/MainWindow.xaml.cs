@@ -31,7 +31,7 @@ namespace EVRAZ_Project
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            string connect = ConfigurationManager.ConnectionStrings["EVRAZ_Project.Properties.Settings.EvrazDB_TestConnectionString"].ConnectionString;
+            /*string connect = ConfigurationManager.ConnectionStrings["EVRAZ_Project.Properties.Settings.EvrazDB_TestConnectionString"].ConnectionString;
             string sql1 = "SELECT Prof_name FROM Profile_Prod";
             string sql2 = "SELECT Marka_type FROM Marka_Prod";
             using (SqlDataAdapter adapter = new SqlDataAdapter(sql1, connect))
@@ -49,11 +49,18 @@ namespace EVRAZ_Project
                 Steel_grade.ItemsSource = db.DefaultView;
                 //Отображение
                 Steel_grade.DisplayMemberPath = "Marka_type";
-            }
+            }*/
+
+            Steel_grade.Items.Add("СТ0");
+            Steel_grade.Items.Add("СТ1");
+            Steel_grade.Items.Add("СТ2");
+
+            Profile.Items.Add("Т58");
+            Profile.Items.Add("Р65");
         }
 
 
-        
+
         int m = 0;
         int n = 0;
         private void Stamp_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -145,15 +152,14 @@ namespace EVRAZ_Project
                     Reports reports = new Reports(Environment.UserName, Date.Text.Trim(), time[0] + ":" + time[1], Rail);
 
                     reports.Position = Rail.Position;
-                    reports.Type = 0;
 
                     Delivery.Items.Add(Rail);
                     Documents.Items.Add(reports);
 
-                    int ID_ = 0;
+                    /*int ID_ = 0;
 
                     string connect = ConfigurationManager.ConnectionStrings["EVRAZ_Project.Properties.Settings.EvrazDB_TestConnectionString"].ConnectionString;
-                    
+
                     string sql_prod = $"INSERT INTO Products_Ved(Kleim,Profile,Marka,ID_Place) VALUES ('{Rail.Stamp}','{Rail.Profile_ID}','{Rail.Steel_grade_ID}','{Rail.Position}')";
 
                     string test = $"Select ID From Products_Ved where Kleim='{Rail.Stamp}'";
@@ -162,7 +168,7 @@ namespace EVRAZ_Project
                         connection.Open();
 
 
-                        using (SqlCommand command = new SqlCommand(sql_prod, connection)) 
+                        using (SqlCommand command = new SqlCommand(sql_prod, connection))
                         {
                             command.ExecuteNonQuery();
                         }
@@ -179,7 +185,8 @@ namespace EVRAZ_Project
                         }
                         using (SqlCommand command = new SqlCommand(sql_char, connection)) { }
                         connection.Close();
-                    }*/
+                    }
+                    */
 
 
 
@@ -358,20 +365,6 @@ namespace EVRAZ_Project
                 Dialog.Date.IsEnabled = false;
                 Dialog.Time.IsReadOnly = true;
                 Dialog.Time.IsReadOnlyCaretVisible = false;
-                Dialog.ShowDialog();
-            }
-            else if (report._Rails.Position == 6 && report.k==1)
-            {
-                Control_window Dialog = new Control_window();
-                Dialog.Title = "Создание ведомости";
-                Dialog.Steel_grade.Text = report._Rails.Steel_grade;
-                Dialog.Profile.Text = report._Rails.Profile;
-                Dialog.Stamp.Text = report._Rails.Stamp;
-                Dialog.Length.Text = report._Rails.Length.ToString();
-                Dialog.Width.Text = report._Rails.Width.ToString();
-                Dialog.Year.Text = report._Rails.Year.ToString();
-                Dialog.Height.Text = report._Rails.Height.ToString();
-                Dialog.Maker.Text = report._Rails.Maker;
                 Dialog.ShowDialog();
             }
             else if (Documents.SelectedItem.GetType() == typeof(Rails))

@@ -10,11 +10,8 @@ namespace EVRAZ_Project
     {
         private string _Name, _Date, _Time;
 
-        private int _Position, _Type;
+        private int _Position;
         private Rails _Rails;
-
-        // Поработать с массивом дефектов, создать свойство
-        private Defect[] _Defects;
 
         public override string ToString()
         {
@@ -31,19 +28,6 @@ namespace EVRAZ_Project
             _Rails = rails;
         }
 
-        public Reports(string name, string data, string time, Rails rails, Defect[] defect)
-        {
-            _Name = name;
-            _Date = data;
-            _Time = time;
-            _Rails = rails;
-            _Defects = defect;
-        }
-
-        public Defect[] defect
-        {
-            get { return _Defects; }
-        }
 
         public Rails Rail
         {
@@ -65,11 +49,6 @@ namespace EVRAZ_Project
         {
             set { _Position = value; }
             get { return _Position; }
-        }
-        public int Type
-        {
-            set { _Type = value; }
-            get { return _Type; }
         }
 
     }

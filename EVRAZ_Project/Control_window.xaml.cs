@@ -38,7 +38,7 @@ namespace EVRAZ_Project
            
         }
 
-        private void Add_def_Click(object sender, RoutedEventArgs e)
+        /*private void Add_def_Click(object sender, RoutedEventArgs e)
         {
             Defects Dialog = new Defects();
             Dialog.Title = "Добавить информацию о дефектах";
@@ -53,7 +53,7 @@ namespace EVRAZ_Project
                 Dialog.Type_defect.DisplayMemberPath = "Type_def";
             }
             Dialog.ShowDialog();
-        }
+        }*/
 
         Defect[] defects;
         public Defect[] GetDef

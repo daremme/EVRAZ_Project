@@ -94,7 +94,7 @@ namespace EVRAZ_Project
                 MessageBox.Show(defects.Length.ToString());
             }
             DialogResult = true;
-            Control_window 
+            
 
         }
 
