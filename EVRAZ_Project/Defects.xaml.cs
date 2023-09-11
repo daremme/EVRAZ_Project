@@ -25,46 +25,78 @@ namespace EVRAZ_Project
             InitializeComponent();
         }
 
-        private void Done_Click(object sender, RoutedEventArgs e)
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            int rowCount = Defect.Items.Count; // количество строк в массиве
-            double[,] resultArray = new double[rowCount, 2]; // создаем двумерный массив с двумя столбцами
+            // Создать в БД таблицу с типами дефектов и заполнить ей комбо бокс
 
-            for (int i = 0; i < rowCount; i++)
-            {
-                Def_Array namedArray = (Def_Array)Defect.Items[i]; // получаем элемент ListBox типа NamedArray
-                double[] array = namedArray.Array; // получаем массив из элемента NamedArray
-                resultArray[i, 0] = array[0]; // записываем имя массива в первый столбец
-                resultArray[i, 1] = array[1]; // записываем значения массива во второй столбец
-            }
+            Type_defect.Items.Add("Трещина");
+            Type_defect.Items.Add("Разрыв");
+            Type_defect.Items.Add("Скол");
 
+
+            // Добавить заполнение уже известных дефектов, хз как 
         }
 
         private void Add_def_Click(object sender, RoutedEventArgs e)
         {
-            int Type;
-            if (Type_defect.Text.Trim()=="Трещина") { Type = 0; }    
-            else { Type = 1; }
-            
-            string len = Lenght_defect.Text.Trim();
-            double Lenght;
-            if (double.TryParse(len, out Lenght))
+            try
             {
-                double[] mas = new double[] { Type, Lenght };
-                var varmas  = new Def_Array { Array=mas };
-                Defect.Items.Add(varmas);
+                if (Type_defect.Text.Trim() == "")
+                {
+                    Type_defect.Focus();
+                    throw new Exception("Выберете тип дефекта заготовки");
+                }
+                if (Lenght_defect.Text.Trim() == "")
+                {
+                    Lenght_defect.Focus();
+                    throw new Exception("Выберете длину дефекта заготовки");
+                }
+                Defect defect = new Defect(Convert.ToString(Type_defect.Text), Convert.ToDouble(Lenght_defect.Text.Trim()));
+                Defect_List.Items.Add(defect);
             }
-            else { MessageBox.Show("Длина должна быть вещественным числом"); }
+            catch (FormatException)
+            {
+                Lenght_defect.Focus();
+                MessageBox.Show("Длина дефекта должна быть числом", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.Message, "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
-        private void Lenght_defect_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void Del_Click(object sender, RoutedEventArgs e)
         {
-            int l = 0;
-            if (l == 0)
+            if (Defect_List.SelectedIndex >= 0)
             {
-                Lenght_defect.Clear();
-                l++;
+                Defect_List.Items.Remove(Defect_List.Items[Defect_List.SelectedIndex]);
             }
         }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+        }
+
+        private void Done_Click(object sender, RoutedEventArgs e)
+        {
+            if (Defect_List.Items.Count > 0)
+            {
+
+                Defect[] defects = new Defect[Defect_List.Items.Count];
+
+                for (int i = 0; i < defects.Length; i++)
+                {
+
+                    defects[i] = Defect_List.Items[i] as Defect;
+                }
+                MessageBox.Show(defects.Length.ToString());
+            }
+            DialogResult = true;
+            Control_window 
+
+        }
+
     }
 }

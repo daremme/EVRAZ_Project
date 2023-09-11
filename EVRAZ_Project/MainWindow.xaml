@@ -45,7 +45,7 @@
         <Label Grid.Column="5" Grid.Row="1" Content="Хранилище" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="15,85,15,15" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="25" Background="Red" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Add_fridge_PreviewMouseDown" />
         <ListBox x:Name="Checkup" Grid.Column="6" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Сheckup_PreviewMouseDown" FontSize="20" />
         <Label Grid.Column="6" Grid.Row="1" Content="Контроль" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="15,85,15,15" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="25" Background="Yellow" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Сheckup_PreviewMouseDown" />
-        <ListBox x:Name="Shipment" Grid.Column="7" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Shipment_PreviewMouseDown"  />
+        <ListBox x:Name="Shipment" Grid.Column="7" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="15,134,15,15"   VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Shipment_PreviewMouseDown" FontSize="20" />
         <Label Grid.Column="7" Grid.Row="1" Content="Погрузка" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="15,85,15,15" Height="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="25" Background="Orange" BorderBrush="Gray" BorderThickness="1" PreviewMouseDown="Shipment_PreviewMouseDown" />
 
 
@@ -80,7 +80,7 @@
                     <TextBox x:Name="Time" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Text="Введите время" VerticalAlignment="Top" Margin="15,0,15,15" FontSize="15" Height="30" PreviewMouseDown="Time_PreviewMouseDown" />
                 </Grid>
 
-                <Button x:Name="Add" Content="Добавить" FontSize="15"  Margin="15,5,15,15" Click="Add_Click"/>
+                <Button x:Name="Add" Content="Добавить" FontSize="15"  Margin="15,5,15,15" Click="Add_Click" IsDefault="True"/>
             </StackPanel>
             
         </Border>

@@ -39,12 +39,8 @@ namespace EVRAZ_Project
                     k.Delivery.Items.Remove(rails);
                     Department.Items.Remove(rails);
                     k.Furnace.Items.Add(rails);
-                    Reports reports = new Reports();
-                    reports._Rails = rails;
-                    reports.Position = rails.Position;
-                    reports.Name = Environment.UserName;
-                    k.Documents.Items.Add(reports);
-                    k.Documents.Items.Add(reports);
+                    k.Documents.Items.Add(rails);
+                    k.Documents.Items.Add(rails);
                 }
                 //С холодильника на контроль
                 if (rails.Position == 4 && Department.SelectedIndex >= 0)
@@ -55,12 +51,8 @@ namespace EVRAZ_Project
                     k.Fridge.Items.Remove(rails);
                     Department.Items.Remove(rails);
                     k.Checkup.Items.Add(rails);
-                    Reports reports = new Reports();
-                    reports._Rails = rails;
-                    reports.Position = rails.Position;
-                    reports.Name = Environment.UserName;
-                    k.Documents.Items.Add(reports);
-                    k.Documents.Items.Add(reports);
+                    k.Documents.Items.Add(rails);
+                    k.Documents.Items.Add(rails);
                 }
             }
         }
@@ -86,11 +78,7 @@ namespace EVRAZ_Project
                     k.Delivery.Items.Remove(rails);
                     Department.Items.Remove(rails);
                     k.Storage.Items.Add(rails);
-                    Reports reports = new Reports();
-                    reports._Rails = rails;
-                    reports.Position = rails.Position;
-                    reports.Name = Environment.UserName;
-                    k.Documents.Items.Add(reports);   
+                    k.Documents.Items.Add(rails);   
                 }
                 //С холодильника в хранилище
                 if (rails.Position == 4 && Department.SelectedIndex >= 0)
@@ -102,11 +90,7 @@ namespace EVRAZ_Project
                     k.Fridge.Items.Remove(rails);
                     Department.Items.Remove(rails);
                     k.Add_fridge.Items.Add(rails);
-                    Reports reports = new Reports();
-                    reports._Rails = rails;
-                    reports.Position = rails.Position;
-                    reports.Name = Environment.UserName;
-                    k.Documents.Items.Add(reports);
+                    k.Documents.Items.Add(rails);
                 }
             }
         }

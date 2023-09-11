@@ -54,5 +54,38 @@ namespace EVRAZ_Project
             }
             Dialog.ShowDialog();
         }
+
+        Defect[] defects;
+        public Defect[] GetDef
+        {
+            get { return defects; }
+            set { defects = value; }
+        }
+
+        private void Add_def_Click(object sender, RoutedEventArgs e)
+        {
+
+            Defects Dialog = new Defects();
+            Dialog.Title = "Добавление дефектов";
+
+
+            //Defect[] defects = new Defect[Dialog.Defect_List.Items.Count];
+            bool? result = Dialog.ShowDialog();
+            if (result == true)
+                MessageBox.Show(defects[0].Lenght_def.ToString());
+            /*for (int i = 0; i < defects.Length; i++)
+        {
+
+            defects[i] = Dialog.Defect_List.Items[i] as Defect;
+        }
+
+
+        *//*bool? result = Dialog.ShowDialog();
+        if (result == true)
+            for (int i = 0; i < Dialog.Defect_List.Items.Count; i++)
+                defects1.Append(Dialog.Defect_List.Items[i]);*//*
+        MessageBox.Show(defects.Length.ToString());
+        MessageBox.Show(defects[0].Lenght_def.ToString());*/
+        }
     }
 }

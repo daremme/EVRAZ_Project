@@ -100,7 +100,7 @@ namespace EVRAZ_Project
                     throw new Exception("Дата введена неверно");
                 }
 
-                string[] time = Time.Text.Trim().Split(new char[] { ':', '.', ',', '\\','/' });
+                string[] time = Time.Text.Trim().Split(new char[] { ':', '.', ',', '\\', '/' });
                 if (time.Length != 2)
                 {
                     Time.Focus();
@@ -137,26 +137,15 @@ namespace EVRAZ_Project
 
                 if (result == true)
                 {
-                    Rails Rail = new Rails();
-                    Rail.Stamp = Stamp.Text.Trim();
-                    Rail.Steel_grade = Steel_grade.Text.Trim();
-                    Rail.Profile = Profile.Text.Trim();
+                    Rails Rail = new Rails(Stamp.Text.Trim(), Steel_grade.Text.Trim(), Profile.Text.Trim(), Dialog.Maker.Text.Trim(), Convert.ToDouble(Dialog.Length.Text.Trim()), Convert.ToDouble(Dialog.Width.Text.Trim()), Convert.ToDouble(Dialog.Height.Text.Trim()), Convert.ToInt32(Dialog.Year.Text.Trim()));
 
-                    Rail.Length = Convert.ToDouble(Dialog.Length.Text.Trim());
-                    Rail.Width = Convert.ToDouble(Dialog.Width.Text.Trim());
-                    Rail.Height = Convert.ToDouble(Dialog.Height.Text.Trim());
-                    Rail.Maker = Dialog.Maker.Text.Trim();
-                    Rail.Year = Convert.ToInt32(Dialog.Year.Text.Trim());
                     Rail.PrewiosPos = 0;
                     Rail.Position = 0;
-                    Reports reports = new Reports();
-                    reports.Position = Rail.Position;
                     string[] time = Time.Text.Trim().Split(new char[] { ':', '.', ',', '\\', '/' });
-                    reports.Time = time[0] + ":" + time[1];
-                    reports.Date = Date.Text.Trim();
+                    Reports reports = new Reports(Environment.UserName, Date.Text.Trim(), time[0] + ":" + time[1], Rail);
+
+                    reports.Position = Rail.Position;
                     reports.Type = 0;
-                    reports.Name = Environment.UserName;
-                    reports._Rails = Rail;
 
                     Delivery.Items.Add(Rail);
                     Documents.Items.Add(reports);
@@ -188,19 +177,26 @@ namespace EVRAZ_Project
                                 }
                             }
                         }
-                        
+                        using (SqlCommand command = new SqlCommand(sql_char, connection)) { }
                         connection.Close();
-                    }
-                    string sql_char = $"INSERT INTO Charact_Prod(ID,Lenght,Width,Thiickness,Year,Creater) VALUES ('{ID_}','{Rail.Length}', '{Rail.Width}','{Rail.Height}','{Rail.Year}','{Rail.Maker}')";
-                    using (SqlConnection connection = new SqlConnection(connect))
-                    {
-                        connection.Open();
-                        using (SqlCommand command = new SqlCommand(sql_char, connection)) { command.ExecuteNonQuery(); }
-                        connection.Close();
-                    }
-                    MessageBox.Show(Rail.ToString() + " добавлена", "Оповещение", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }*/
+
+
+
+                    MessageBox.Show(Rail.ToString() + " успешно добавлена", "Оповещение", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(reports.Name, "Оповещение", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
+                /*if (command.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Suka", "Blyat3");
+                }*/
             }
+            // connection.Close();
+        }
+        private void Find_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("awggr", "Требуется исправление", MessageBoxButton.OK, MessageBoxImage.Error);
+
         }
 
         private void Delivery_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -217,8 +213,6 @@ namespace EVRAZ_Project
                 }
 
                 bool? result = Dialog.ShowDialog();
-
-                
             }
         }
 
@@ -236,8 +230,6 @@ namespace EVRAZ_Project
                 }
 
                 bool? result = Dialog.ShowDialog();
-
-               
             }
         }
 
@@ -255,8 +247,6 @@ namespace EVRAZ_Project
                 }
 
                 bool? result = Dialog.ShowDialog();
-
-               
             }
         }
 
@@ -274,8 +264,6 @@ namespace EVRAZ_Project
                 }
 
                 bool? result = Dialog.ShowDialog();
-
-               
             }
         }
 
@@ -293,8 +281,6 @@ namespace EVRAZ_Project
                 }
 
                 bool? result = Dialog.ShowDialog();
-
-               
             }
         }
 
@@ -312,8 +298,6 @@ namespace EVRAZ_Project
                 }
 
                 bool? result = Dialog.ShowDialog();
-
-             
             }
         }
 
@@ -331,8 +315,6 @@ namespace EVRAZ_Project
                 }
 
                 bool? result = Dialog.ShowDialog();
-
-               
             }
         }
 
@@ -350,28 +332,28 @@ namespace EVRAZ_Project
                 }
 
                 bool? result = Dialog.ShowDialog();
-
-                
             }
         }
 
         private void Documents_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Reports report = Documents.SelectedItem as Reports;
-            if (report._Rails.Position == 0)
+
+
+            if (Documents.SelectedItem.GetType() == typeof(Reports))
             {
                 Report_window Dialog = new Report_window();
-                Dialog.Title = "Создание ведомости";
-                Dialog.Steel_grade.Text = report._Rails.Steel_grade;
-                Dialog.Profile.Text = report._Rails.Profile;
-                Dialog.Stamp.Text = report._Rails.Stamp;
-                Dialog.Length.Text = report._Rails.Length.ToString();
-                Dialog.Width.Text = report._Rails.Width.ToString();
-                Dialog.Year.Text = report._Rails.Year.ToString();
-                Dialog.Height.Text = report._Rails.Height.ToString();
-                Dialog.Maker.Text = report._Rails.Maker;
+                Dialog.Title = "Создание ведомости о поставке";
+                Reports report = Documents.SelectedItem as Reports;
+                Dialog.Steel_grade.Text = report.Rail.Steel_grade;
+                Dialog.Profile.Text = report.Rail.Profile;
+                Dialog.Stamp.Text = report.Rail.Stamp;
+                Dialog.Length.Text = report.Rail.Length.ToString();
+                Dialog.Width.Text = report.Rail.Width.ToString();
+                Dialog.Year.Text = report.Rail.Year.ToString();
+                Dialog.Height.Text = report.Rail.Height.ToString();
+                Dialog.Maker.Text = report.Rail.Maker;
                 Dialog.Time.Text = report.Time.ToString();
-                DateTime date = DateTime.Parse(report.Date);
+                DateTime date = DateTime.Parse(report.Time);
                 Dialog.Date.SelectedDate = date;
                 Dialog.Date.IsEnabled = false;
                 Dialog.Time.IsReadOnly = true;
@@ -392,19 +374,39 @@ namespace EVRAZ_Project
                 Dialog.Maker.Text = report._Rails.Maker;
                 Dialog.ShowDialog();
             }
-            else if (report._Rails.Position != 0 || report._Rails.Position != 6)
+            else if (Documents.SelectedItem.GetType() == typeof(Rails))
             {
-                Report_window Dialog = new Report_window();
-                Dialog.Title = "Создание ведомости";
-                Dialog.Steel_grade.Text = report._Rails.Steel_grade;
-                Dialog.Profile.Text = report._Rails.Profile;
-                Dialog.Stamp.Text = report._Rails.Stamp;
-                Dialog.Length.Text = report._Rails.Length.ToString();
-                Dialog.Width.Text = report._Rails.Width.ToString();
-                Dialog.Year.Text = report._Rails.Year.ToString();
-                Dialog.Height.Text = report._Rails.Height.ToString();
-                Dialog.Maker.Text = report._Rails.Maker;
-                Dialog.ShowDialog();
+                Rails Rail = Documents.SelectedItem as Rails;
+                if (Rail.Position == 7)
+                {
+                    Control_window Dialog = new Control_window();
+                    Dialog.Title = "Создание ведомости о дефектах балки";
+
+                    Dialog.Steel_grade.Text = Rail.Steel_grade;
+                    Dialog.Profile.Text = Rail.Profile;
+                    Dialog.Stamp.Text = Rail.Stamp;
+                    Dialog.Length.Text = Rail.Length.ToString();
+                    Dialog.Width.Text = Rail.Width.ToString();
+                    Dialog.Year.Text = Rail.Year.ToString();
+                    Dialog.Height.Text = Rail.Height.ToString();
+                    Dialog.Maker.Text = Rail.Maker;
+                    Dialog.ShowDialog();
+                }
+                else
+                {
+                    Report_window Dialog = new Report_window();
+                    Dialog.Title = "Создание ведомости";
+
+                    Dialog.Steel_grade.Text = Rail.Steel_grade;
+                    Dialog.Profile.Text = Rail.Profile;
+                    Dialog.Stamp.Text = Rail.Stamp;
+                    Dialog.Length.Text = Rail.Length.ToString();
+                    Dialog.Width.Text = Rail.Width.ToString();
+                    Dialog.Year.Text = Rail.Year.ToString();
+                    Dialog.Height.Text = Rail.Height.ToString();
+                    Dialog.Maker.Text = Rail.Maker;
+                    Dialog.ShowDialog();
+                }
             }
         }
     }

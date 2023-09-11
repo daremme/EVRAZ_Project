@@ -86,6 +86,7 @@
     <Compile Include="Control_window.xaml.cs">
       <DependentUpon>Control_window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Defect.cs" />
     <Compile Include="Defects.xaml.cs">
       <DependentUpon>Defects.xaml</DependentUpon>
     </Compile>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EVRAZ_Project"
         mc:Ignorable="d"
-        Title="Defects" Height="500" Width="468">
+        Title="Defects" Height="550" Width="450" Loaded="Window_Loaded">
     <StackPanel>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -15,19 +15,23 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
-            <ComboBox x:Name="Type_defect" Text="Выберете тип дефекта"  FontSize="15" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Stretch" Margin="15,15,15,5" VerticalAlignment="Top" Height="30" />
-            <TextBox x:Name="Lenght_defect" Grid.Column="1" Grid.Row="0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="Введите длину дефекта (м)" VerticalAlignment="Top" Margin="0,15,15,0" FontSize="15" Height="30" PreviewMouseDown="Lenght_defect_PreviewMouseDown" />
+            <Label Content="Выберете тип дефекта" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="15,10,15,0" VerticalAlignment="Top" FontSize="15"/>
+            <Label Content="Длина дефекта в см" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Margin="15,10,15,0" VerticalAlignment="Top" FontSize="15"/>
+            
+            <ComboBox x:Name="Type_defect" FontSize="15" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" Margin="15,0,15,5" VerticalAlignment="Top" Height="30" />
+            <TextBox x:Name="Lenght_defect" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Margin="15,0,15,5" FontSize="15" Height="30" />
 
 
-            <Button x:Name="Del" Grid.Column="0" Grid.Row="1" Content="Удалить" FontSize="15"  Margin="15,5,15,15" Background="Red" />
-            <Button x:Name="Add_def" Grid.Column="1" Grid.Row="1" Content="Добавить дефект" FontSize="15"  Margin="0,5,15,15" Background="Yellow" IsDefault="True" Click="Add_def_Click"/>
+            <Button x:Name="Del" Grid.Column="0" Grid.Row="2" Content="Удалить" FontSize="15"  Margin="15,5,15,15" Background="Red" Click="Del_Click"/>
+            <Button x:Name="Add_def" Grid.Column="1" Grid.Row="2" Content="Добавить дефект" FontSize="15"  Margin="15,5,15,15" Background="Yellow" IsDefault="True" Click="Add_def_Click"/>
         </Grid>
         <Grid>
             <Label x:Name="Defect_info" Content="Дефекты балки " HorizontalAlignment="Stretch" Margin="15,0,15,15" VerticalAlignment="Top"  FontSize="20"  />
 
             <Border Background="LightGray" Margin="15,40,15,20" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
-                <ListBox x:Name="Defect"  HorizontalAlignment="Stretch" Margin="10,10,10,10"  VerticalAlignment="Top" Height="250" Background="LightGray" BorderThickness="0" FontSize="20"/>
+                <ListBox x:Name="Defect_List"  HorizontalAlignment="Stretch" Margin="10,10,10,10"  VerticalAlignment="Top" Height="250" Background="LightGray" BorderThickness="0" FontSize="20"/>
             </Border>
         </Grid>
         <Grid>
@@ -38,7 +42,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button x:Name="Cancel" Grid.Column="0" Grid.Row="0" Content="Отмена" FontSize="15"  Margin="15,5,15,15" Background="Red" IsCancel="True"/>
+            <Button x:Name="Cancel" Grid.Column="0" Grid.Row="0" Content="Отмена" FontSize="15"  Margin="15,5,15,15" Background="Red" IsCancel="True" Click="Cancel_Click"/>
             <Button x:Name="Done" Grid.Column="1" Grid.Row="0" Content="Готово" FontSize="15"  Margin="15,5,15,15" Background="Orange" IsDefault="True" Click="Done_Click"/>
         </Grid>
     </StackPanel>

@@ -18,35 +18,88 @@ namespace EVRAZ_Project
 
         public override string ToString()
         {
-            return "Балка "+_Stamp;
+            return "Балка " + _Stamp;
+        }
+
+        int k = 0;
+        public string ReportString
+        {
+            get
+            {
+                //Поставка
+                if (Position == 0) { return "Создайте ведомость о поставке: '" + ToString() + "'"; }
+                //Хранение на склад
+                else if (Position == 1) { return "Создайте ведомость о перемещениии на склад: '" + ToString() + "'"; }
+                //Передача со склада в печь 
+                else if (Position == 2 && PrewiosPos == 1 && k == 0) { k = 1; return "Создайте ведомость о перемещениии: '" + ToString() + "' в печь со склада"; }
+                else if (Position == 2 && PrewiosPos == 1 && k == 1) { k = 0; return "Создайте ведомость о поставке: '" + ToString() + "' в печь со склада"; }
+                //Передача с зоны поставки в печь 
+                else if (Position == 2 && PrewiosPos == 0 && k == 0) { k = 1; return "Создайте ведомость о перемещениии: '" + ToString() + "' в печь с зоны поставки"; }
+                else if (Position == 2 && PrewiosPos == 0 && k == 1) { k = 0; return "Создайте ведомость о поставке: '" + ToString() + "' в печь с зоны поставки"; }
+                //С печи на стан
+                else if (Position == 3 && k == 0) { k = 1; return "Создайте ведомость о перемещениии: '" + ToString() + "' с печи на прокатный стан"; }
+                else if (Position == 3 && k == 1) { k = 0; return "Создайте ведомость о поставке: '" + ToString() + "' с печи на прокатный стан"; }
+                //Со стана в холодильник
+                else if (Position == 4 && k == 0) { k = 1; return "Создайте ведомость о перемещениии: '" + ToString() + "' со стана в холодильник"; }
+                else if (Position == 4 && k == 1) { k = 0; return "Создайте ведомость о поставке: '" + ToString() + "' со стана в холодильник"; }
+                //С холодильника в хранилище
+                else if (Position == 5 && k == 0) { k = 1; return "Создайте ведомость о перемещениии в хранилище: '" + ToString() + "'"; }
+                //С хранилища на линию контроля
+                else if (Position == 6 && PrewiosPos == 2 && k == 0) { k = 1; return "Создайте ведомость о перемещениии: '" + ToString() + "' с хранилища на линию контроля"; }
+                else if (Position == 6 && PrewiosPos == 2 && k == 1) { k = 0; return "Создайте ведомость о поставке: '" + ToString() + "' с хранилища на линию контроля"; }
+                //С холодильника на линию контроля
+                else if (Position == 6 && (PrewiosPos == 1 || PrewiosPos == 0) && k == 0) { k = 1; return "Создайте ведомость о перемещениии: '" + ToString() + "' с холодильника на линию контроля"; }
+                else if (Position == 6 && (PrewiosPos == 1 || PrewiosPos == 0) && k == 1) { k = 0; return "Создайте ведомость о поставке: '" + ToString() + "' С холодильника на линию контроля"; }
+                //С линии контроля на отгрузку
+                else if (Position == 7 && k == 0) { k = 1; return "Создайте ведомость о перемещениии: '" + ToString() + "' с линии контроля на отгрузку"; }
+                else if (Position == 7 && k == 1) { k = 0; return "Создайте ведомость о поставке: '" + ToString() + "' с линии контроля на отгрузку"; }
+                //Нужны ли уведомления с отгрузки??
+                else
+                    return "0";
+            }
+        }
+
+        public Rails() { }
+
+        public Rails(string stamp, string steel_grade, string profile, string maker, double length, double width, double height, int year)
+        {
+            _Stamp = stamp;
+            _Maker = maker;
+            _Length = length;
+            _Width = width;
+            _Height = height;
+
+            if (steel_grade == "СТ0")
+                _Steel_grade = 0;
+            else if (steel_grade == "СТ1")
+                _Steel_grade = 1;
+            if (steel_grade == "СТ2")
+                _Steel_grade = 2;
+            else if (steel_grade == "СТ3")
+                _Steel_grade = 3;
+            if (steel_grade == "СТ4")
+                _Steel_grade = 4;
+            else if (steel_grade == "СТ5")
+                _Steel_grade = 5;
+            if (steel_grade == "СТ6")
+                _Steel_grade = 6;
+            else if (steel_grade == "СТ7")
+                _Steel_grade = 7;
+
+            if (profile == "Т58")
+                _Profile = 0;
+            if (profile == "Р65")
+                _Profile = 1;
+
+            _Year = year;
         }
 
         public string Stamp
         {
-            set { _Stamp = value; }
             get { return _Stamp; }
         }
         public string Steel_grade
         {
-            set
-            {
-                if (Steel_grade == "СТ0")
-                    _Steel_grade = 0;
-                else if (Steel_grade == "СТ1")
-                    _Steel_grade = 1;
-                if (Steel_grade == "СТ2")
-                    _Steel_grade = 2;
-                else if (Steel_grade == "СТ3")
-                    _Steel_grade = 3;
-                if (Steel_grade == "СТ4")
-                    _Steel_grade = 4;
-                else if (Steel_grade == "СТ5")
-                    _Steel_grade = 5;
-                if (Steel_grade == "СТ6")
-                    _Steel_grade = 6;
-                else if (Steel_grade == "СТ7")
-                    _Steel_grade = 7;
-            }
             get
             {
                 if (_Steel_grade == 0)
@@ -70,16 +123,9 @@ namespace EVRAZ_Project
         public int Steel_grade_ID
         {
             get { return _Steel_grade; }
-        }        
+        }
         public string Profile
         {
-            set
-            {
-                if (value == "Т58")
-                    _Profile = 0;
-                if (value == "Р65")
-                    _Profile = 1;
-            }
             get
             {
                 if (_Profile == 0)
@@ -94,28 +140,23 @@ namespace EVRAZ_Project
         }
         public string Maker
         {
-            set { _Maker = value; }
             get { return _Maker; }
         }
 
         public double Length
         {
-            set { _Length = value; }
             get { return _Length; }
         }
         public double Width
         {
-            set { _Width = value; }
             get { return _Width; }
         }
         public double Height
         {
-            set { _Height = value; }
             get { return _Height; }
         }
         public int Year
         {
-            set { _Year = value; }
             get { return _Year; }
         }
         public int Position
