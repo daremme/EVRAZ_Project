@@ -61,18 +61,37 @@ namespace EVRAZ_Project
             get { return defects; }
             set { defects = value; }
         }
-
+        List<Defect> ListLoad=new List<Defect>();
         private void Add_def_Click(object sender, RoutedEventArgs e)
         {
 
             Defects Dialog = new Defects();
             Dialog.Title = "Добавление дефектов";
+            if (ListLoad != null) 
+            {
+                for (int i = 0; i < ListLoad.Count; i++)
+                {
+                    Dialog.Defect_List.Items.Add(ListLoad[i]);
+                }
+            }
+            Dialog.Closed += (s, args) =>
+            {
+                ListLoad.Clear();
+                // Сохранить данные ListBox после закрытия окна
+                for (int i = 0; i < Dialog.Defect_List.Items.Count; i++)
+                {
+                    ListLoad.Add(Dialog.Defect_List.Items[i] as Defect);
+                }
+            };
+
+            Dialog.ShowDialog();
 
 
             //Defect[] defects = new Defect[Dialog.Defect_List.Items.Count];
-            bool? result = Dialog.ShowDialog();
+            /*bool? result = Dialog.ShowDialog();
+
             if (result == true)
-                MessageBox.Show(defects[0].Lenght_def.ToString());
+                MessageBox.Show(ListLoad[0].ToString());*/
             /*for (int i = 0; i < defects.Length; i++)
         {
 

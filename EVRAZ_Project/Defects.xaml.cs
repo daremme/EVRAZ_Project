@@ -35,7 +35,6 @@ namespace EVRAZ_Project
             Type_defect.Items.Add("Скол");
 
 
-            // Добавить заполнение уже известных дефектов, хз как 
         }
 
         private void Add_def_Click(object sender, RoutedEventArgs e)
@@ -81,20 +80,8 @@ namespace EVRAZ_Project
 
         private void Done_Click(object sender, RoutedEventArgs e)
         {
-            if (Defect_List.Items.Count > 0)
-            {
-
-                Defect[] defects = new Defect[Defect_List.Items.Count];
-
-                for (int i = 0; i < defects.Length; i++)
-                {
-
-                    defects[i] = Defect_List.Items[i] as Defect;
-                }
-                MessageBox.Show(defects.Length.ToString());
-            }
-            DialogResult = true;
             
+            DialogResult = true;
 
         }
 

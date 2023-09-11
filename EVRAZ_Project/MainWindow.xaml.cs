@@ -365,7 +365,7 @@ namespace EVRAZ_Project
                 Dialog.Date.IsEnabled = false;
                 Dialog.Time.IsReadOnly = true;
                 Dialog.Time.IsReadOnlyCaretVisible = false;
-                Dialog.ShowDialog();
+                Dialog.Show();
             }
             else if (Documents.SelectedItem.GetType() == typeof(Rails))
             {
@@ -383,7 +383,7 @@ namespace EVRAZ_Project
                     Dialog.Year.Text = Rail.Year.ToString();
                     Dialog.Height.Text = Rail.Height.ToString();
                     Dialog.Maker.Text = Rail.Maker;
-                    Dialog.ShowDialog();
+                    Dialog.Show();
                 }
                 else
                 {
@@ -398,7 +398,7 @@ namespace EVRAZ_Project
                     Dialog.Year.Text = Rail.Year.ToString();
                     Dialog.Height.Text = Rail.Height.ToString();
                     Dialog.Maker.Text = Rail.Maker;
-                    Dialog.ShowDialog();
+                    Dialog.Show();
                 }
             }
         }
