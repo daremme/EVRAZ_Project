@@ -12,7 +12,7 @@ namespace EVRAZ_Project
 
         private double _Length, _Width, _Height;
 
-        private int _Steel_grade, _Profile, _Year, _Position, _PrewiosPos;
+        private int _Steel_grade, _Profile, _Year, _Position;
 
 
 
@@ -22,42 +22,6 @@ namespace EVRAZ_Project
         }
 
         int k = 0;
-        public string ReportString
-        {
-            get
-            {
-                //Поставка
-                if (Position == 0) { return "Создайте ведомость о поставке: '" + ToString() + "'"; }
-                //Хранение на склад
-                else if (Position == 1) { return "Создайте ведомость о перемещениии на склад: '" + ToString() + "'"; }
-                //Передача со склада в печь 
-                else if (Position == 2 && PrewiosPos == 1 && k == 0) { k = 1; return "Создайте ведомость о перемещениии: '" + ToString() + "' в печь со склада"; }
-                else if (Position == 2 && PrewiosPos == 1 && k == 1) { k = 0; return "Создайте ведомость о поставке: '" + ToString() + "' в печь со склада"; }
-                //Передача с зоны поставки в печь 
-                else if (Position == 2 && PrewiosPos == 0 && k == 0) { k = 1; return "Создайте ведомость о перемещениии: '" + ToString() + "' в печь с зоны поставки"; }
-                else if (Position == 2 && PrewiosPos == 0 && k == 1) { k = 0; return "Создайте ведомость о поставке: '" + ToString() + "' в печь с зоны поставки"; }
-                //С печи на стан
-                else if (Position == 3 && k == 0) { k = 1; return "Создайте ведомость о перемещениии: '" + ToString() + "' с печи на прокатный стан"; }
-                else if (Position == 3 && k == 1) { k = 0; return "Создайте ведомость о поставке: '" + ToString() + "' с печи на прокатный стан"; }
-                //Со стана в холодильник
-                else if (Position == 4 && k == 0) { k = 1; return "Создайте ведомость о перемещениии: '" + ToString() + "' со стана в холодильник"; }
-                else if (Position == 4 && k == 1) { k = 0; return "Создайте ведомость о поставке: '" + ToString() + "' со стана в холодильник"; }
-                //С холодильника в хранилище
-                else if (Position == 5 && k == 0) { k = 1; return "Создайте ведомость о перемещениии в хранилище: '" + ToString() + "'"; }
-                //С хранилища на линию контроля
-                else if (Position == 6 && PrewiosPos == 2 && k == 0) { k = 1; return "Создайте ведомость о перемещениии: '" + ToString() + "' с хранилища на линию контроля"; }
-                else if (Position == 6 && PrewiosPos == 2 && k == 1) { k = 0; return "Создайте ведомость о поставке: '" + ToString() + "' с хранилища на линию контроля"; }
-                //С холодильника на линию контроля
-                else if (Position == 6 && (PrewiosPos == 1 || PrewiosPos == 0) && k == 0) { k = 1; return "Создайте ведомость о перемещениии: '" + ToString() + "' с холодильника на линию контроля"; }
-                else if (Position == 6 && (PrewiosPos == 1 || PrewiosPos == 0) && k == 1) { k = 0; return "Создайте ведомость о поставке: '" + ToString() + "' С холодильника на линию контроля"; }
-                //С линии контроля на отгрузку
-                else if (Position == 7 && k == 0) { k = 1; return "Создайте ведомость о перемещениии: '" + ToString() + "' с линии контроля на отгрузку"; }
-                else if (Position == 7 && k == 1) { k = 0; return "Создайте ведомость о поставке: '" + ToString() + "' с линии контроля на отгрузку"; }
-                //Нужны ли уведомления с отгрузки??
-                else
-                    return "0";
-            }
-        }
 
         public Rails() { }
 
@@ -163,11 +127,6 @@ namespace EVRAZ_Project
         {
             set { _Position = value; }
             get { return _Position; }
-        }
-        public int PrewiosPos
-        {
-            set { _PrewiosPos = value; }
-            get { return _PrewiosPos; }
         }
     }
 }

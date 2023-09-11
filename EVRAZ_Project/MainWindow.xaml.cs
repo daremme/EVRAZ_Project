@@ -146,10 +146,9 @@ namespace EVRAZ_Project
                 {
                     Rails Rail = new Rails(Stamp.Text.Trim(), Steel_grade.Text.Trim(), Profile.Text.Trim(), Dialog.Maker.Text.Trim(), Convert.ToDouble(Dialog.Length.Text.Trim()), Convert.ToDouble(Dialog.Width.Text.Trim()), Convert.ToDouble(Dialog.Height.Text.Trim()), Convert.ToInt32(Dialog.Year.Text.Trim()));
 
-                    Rail.PrewiosPos = 0;
                     Rail.Position = 0;
                     string[] time = Time.Text.Trim().Split(new char[] { ':', '.', ',', '\\', '/' });
-                    Reports reports = new Reports(Environment.UserName, Date.Text.Trim(), time[0] + ":" + time[1], Rail);
+                    Reports reports = new Reports(0,Environment.UserName, Date.Text.Trim(), time[0] + ":" + time[1], Rail);
 
                     reports.Position = Rail.Position;
 
@@ -344,13 +343,12 @@ namespace EVRAZ_Project
 
         private void Documents_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Reports report = Documents.SelectedItem as Reports;
 
-
-            if (Documents.SelectedItem.GetType() == typeof(Reports))
+            if (report.Position==0)
             {
                 Report_window Dialog = new Report_window();
-                Dialog.Title = "Создание ведомости о поставке";
-                Reports report = Documents.SelectedItem as Reports;
+                Dialog.Title = report.ToString();
                 Dialog.Steel_grade.Text = report.Rail.Steel_grade;
                 Dialog.Profile.Text = report.Rail.Profile;
                 Dialog.Stamp.Text = report.Rail.Stamp;
@@ -367,41 +365,36 @@ namespace EVRAZ_Project
                 Dialog.Time.IsReadOnlyCaretVisible = false;
                 Dialog.ShowDialog();
             }
-            else if (Documents.SelectedItem.GetType() == typeof(Rails))
+            else if (report.Position == 9)
             {
-                Rails Rail = Documents.SelectedItem as Rails;
-                if (Rail.Position == 7)
-                {
                     Control_window Dialog = new Control_window();
-                    Dialog.Title = "Создание ведомости о дефектах балки";
-
-                    Dialog.Steel_grade.Text = Rail.Steel_grade;
-                    Dialog.Profile.Text = Rail.Profile;
-                    Dialog.Stamp.Text = Rail.Stamp;
-                    Dialog.Length.Text = Rail.Length.ToString();
-                    Dialog.Width.Text = Rail.Width.ToString();
-                    Dialog.Year.Text = Rail.Year.ToString();
-                    Dialog.Height.Text = Rail.Height.ToString();
-                    Dialog.Maker.Text = Rail.Maker;
+                    Dialog.Title = report.ToString();
+                    Dialog.Steel_grade.Text = report.Rail.Steel_grade;
+                    Dialog.Profile.Text = report.Rail.Profile;
+                    Dialog.Stamp.Text = report.Rail.Stamp;
+                    Dialog.Length.Text = report.Rail.Length.ToString();
+                    Dialog.Width.Text = report.Rail.Width.ToString();
+                    Dialog.Year.Text = report.Rail.Year.ToString();
+                    Dialog.Height.Text = report.Rail.Height.ToString();
+                    Dialog.Maker.Text = report.Rail.Maker;
                     Dialog.ShowDialog();
                 }
                 else
                 {
                     Report_window Dialog = new Report_window();
-                    Dialog.Title = "Создание ведомости";
-
-                    Dialog.Steel_grade.Text = Rail.Steel_grade;
-                    Dialog.Profile.Text = Rail.Profile;
-                    Dialog.Stamp.Text = Rail.Stamp;
-                    Dialog.Length.Text = Rail.Length.ToString();
-                    Dialog.Width.Text = Rail.Width.ToString();
-                    Dialog.Year.Text = Rail.Year.ToString();
-                    Dialog.Height.Text = Rail.Height.ToString();
-                    Dialog.Maker.Text = Rail.Maker;
+                    Dialog.Title = report.ToString();
+                    Dialog.Steel_grade.Text = report.Rail.Steel_grade;
+                    Dialog.Profile.Text = report.Rail.Profile;
+                    Dialog.Stamp.Text = report.Rail.Stamp;
+                    Dialog.Length.Text = report.Rail.Length.ToString();
+                    Dialog.Width.Text = report.Rail.Width.ToString();
+                    Dialog.Year.Text = report.Rail.Year.ToString();
+                    Dialog.Height.Text = report.Rail.Height.ToString();
+                    Dialog.Maker.Text = report.Rail.Maker;
                     Dialog.ShowDialog();
                 }
             }
         }
     }
-}
+
 

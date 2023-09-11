@@ -26,7 +26,7 @@ namespace EVRAZ_Project
 
         private void Next_Click(object sender, RoutedEventArgs e)
         {
-            if (Department.Items.Count>0)
+            if (Department.Items.Count > 0)
             {
                 Rails rails = new Rails();
                 rails = Department.Items[0] as Rails;
@@ -34,30 +34,34 @@ namespace EVRAZ_Project
                 if (rails.Position == 0 && Department.SelectedIndex >= 0)
                 {
                     rails = Department.SelectedItem as Rails;
-                    rails.Position = 2;
+                    rails.Position = 3;
                     MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); ;
                     k.Delivery.Items.Remove(rails);
                     Department.Items.Remove(rails);
                     k.Furnace.Items.Add(rails);
-                    k.Documents.Items.Add(rails);
-                    k.Documents.Items.Add(rails);
+
+                    Reports report = new Reports(3, rails);
+                    k.Documents.Items.Add(report);
+                    k.Documents.Items.Add(report);
                 }
                 //С холодильника на контроль
-                if (rails.Position == 4 && Department.SelectedIndex >= 0)
+                if (rails.Position == 5 && Department.SelectedIndex >= 0)
                 {
                     rails = Department.SelectedItem as Rails;
-                    rails.Position = 6;
+                    rails.Position = 8;
                     MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); ;
                     k.Fridge.Items.Remove(rails);
                     Department.Items.Remove(rails);
                     k.Checkup.Items.Add(rails);
-                    k.Documents.Items.Add(rails);
-                    k.Documents.Items.Add(rails);
+
+                    Reports report = new Reports(8, rails);
+                    k.Documents.Items.Add(report);
+                    k.Documents.Items.Add(report);
                 }
             }
         }
 
-            private void Cancel_Click(object sender, RoutedEventArgs e)
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
         }
@@ -73,24 +77,26 @@ namespace EVRAZ_Project
                 {
                     rails = Department.SelectedItem as Rails;
                     rails.Position = 1;
-                    rails.PrewiosPos = 1;
                     MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); ;
                     k.Delivery.Items.Remove(rails);
                     Department.Items.Remove(rails);
                     k.Storage.Items.Add(rails);
-                    k.Documents.Items.Add(rails);   
+                    Reports report = new Reports(1, rails);
+
+                    k.Documents.Items.Add(report);
                 }
                 //С холодильника в хранилище
-                if (rails.Position == 4 && Department.SelectedIndex >= 0)
+                if (rails.Position == 5 && Department.SelectedIndex >= 0)
                 {
                     rails = Department.SelectedItem as Rails;
-                    rails.Position = 5;
-                    rails.PrewiosPos = 2;
+                    rails.Position = 6;
                     MainWindow k = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault(); ;
                     k.Fridge.Items.Remove(rails);
                     Department.Items.Remove(rails);
                     k.Add_fridge.Items.Add(rails);
-                    k.Documents.Items.Add(rails);
+                    Reports report = new Reports(6, rails);
+
+                    k.Documents.Items.Add(report);
                 }
             }
         }
