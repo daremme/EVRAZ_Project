@@ -377,7 +377,7 @@ namespace EVRAZ_Project
                     Dialog.Year.Text = report.Rail.Year.ToString();
                     Dialog.Height.Text = report.Rail.Height.ToString();
                     Dialog.Maker.Text = report.Rail.Maker;
-                    Dialog.ShowDialog();
+                    Dialog.Show();
                 }
                 else
                 {
@@ -391,7 +391,7 @@ namespace EVRAZ_Project
                     Dialog.Year.Text = report.Rail.Year.ToString();
                     Dialog.Height.Text = report.Rail.Height.ToString();
                     Dialog.Maker.Text = report.Rail.Maker;
-                    Dialog.ShowDialog();
+                    Dialog.Show();
                 }
             }
         }
